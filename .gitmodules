@@ -1,0 +1,3 @@
+[submodule "seven-sys/vendor/libseven"]
+	path = seven-sys/vendor/libseven
+	url = https://github.com/lunarlambda/libseven
