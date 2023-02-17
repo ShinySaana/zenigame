@@ -1,20 +1,42 @@
+use std::{path::PathBuf, env};
+
 fn main() {
     // we skip assembling the runtime for docs.rs builds.
     if !cfg!(docs_rs) {
-      let out_file = "rsrt0.o";
-      let out_dir = std::env::var("OUT_DIR").unwrap();
-      let out_dir_file = format!("{}/{}", out_dir, out_file);
-      let as_output = std::process::Command::new("arm-none-eabi-as")
-        .args(&["-o", out_dir_file.as_str()])
-        .arg("-mthumb-interwork")
-        .arg("-mcpu=arm7tdmi")
-        .arg("src/rsrt0.S")
+      let root_dir = PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/.."));
+      let sdk_seven_dir = root_dir.join(PathBuf::from("vendor/sdk-seven"));
+      let build_path = PathBuf::from(env::var("OUT_DIR").unwrap());
+      let build_path = build_path.join("build");
+      let libseven_build_dir = build_path.to_str().unwrap();
+
+      let setup_output = std::process::Command::new("meson")
+        .args([
+          "setup",
+          "--cross-file=cross/arm-none-eabi.txt",
+          "--cross-file=cross/arm7tdmi.txt",
+          "-Dminrt_lang=rust",
+          libseven_build_dir
+        ])
+        .current_dir(sdk_seven_dir.to_str().unwrap())
         .output()
-        .expect("failed to run arm-none-eabi-as");
-      if !as_output.status.success() {
-        panic!("{}", String::from_utf8_lossy(&as_output.stderr));
+        .expect("libseven: failed to setup");
+
+      if !setup_output.status.success() {
+        panic!("{}", String::from_utf8_lossy(&setup_output.stderr));
       }
-      //
-      println!("cargo:rustc-link-search={}", out_dir);
+
+      let build_output = std::process::Command::new("ninja")
+        .arg("-C")
+        .arg("build")
+        .current_dir(PathBuf::from(env::var("OUT_DIR").unwrap()))
+        .output()
+        .expect("libseven: failed to build");
+
+      if !build_output.status.success() {
+        panic!("{}", String::from_utf8_lossy(&build_output.stderr));
+      }
+
+      println!("cargo:rustc-link-search={}/minrt", libseven_build_dir);
+      println!("cargo:rustc-link-lib=static=minrt_rom");
     }
   }

@@ -1,18 +1,11 @@
 #![no_std]
 
-pub mod irq;
-pub mod log;
+use core::panic::PanicInfo;
 
-#[inline]
-pub unsafe fn read_reg16(address: u32) -> u16 {
-    let p = address as *mut u16;
-    p.read_volatile()
+#[panic_handler]
+pub fn panic(_info: &PanicInfo) -> ! {
+    loop {}
 }
 
-#[inline]
-pub unsafe fn write_reg16(address: u32, value: u16) {
-    let p = address as *mut u16;
-    p.write_volatile(value);
-}
-
-
+#[no_mangle]
+pub extern "C" fn __aeabi_unwind_cpp_pr0() {}

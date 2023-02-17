@@ -4,7 +4,12 @@ target = "thumbv4t-none-eabi"
 [unstable]
 build-std = ["core"]
 
+# Something something feature flag for multiboot target
 [target.thumbv4t-none-eabi]
-rustflags = ["-Clink-arg=-Tzenigame/linker.ld"]
-runner = "mgba-qt"
-
+rustflags = [
+    "-C", "link-arg=-Tvendor/sdk-seven/minrt/lib/ldscripts/rom.mem",
+    "-C", "link-arg=-Tvendor/sdk-seven/minrt/lib/ldscripts/gba.x",
+    # "-C", "link-arg=-Map=zenigame.map",
+]
+# runner = "mgba-qt"
+runner = "vendor/mgba-11.dev.appimage"
