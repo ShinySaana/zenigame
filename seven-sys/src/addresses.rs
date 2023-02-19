@@ -27,9 +27,9 @@ impl <T: Copy, const Size: usize> SevenVolArray <T, Size> {
         self.address().read_volatile()
     }
 
-    pub unsafe fn get(&self, idx: usize) -> T {
+    pub unsafe fn index(&self, idx: usize) -> T {
         if idx >= Size {
-            panic!();
+            panic!("Out of bound access");
         }
 
         let ptr = self.address() as *const T;
@@ -40,9 +40,9 @@ impl <T: Copy, const Size: usize> SevenVolArray <T, Size> {
         self.address().write_volatile(val)
     }
 
-    pub unsafe fn set(&self, idx: usize, val: T) {
+    pub unsafe fn index_mut(&self, idx: usize, val: T) {
         if idx >= Size {
-            panic!();
+            panic!("Out of bound access");
         }
 
         let ptr = self.address() as *mut T;
@@ -77,9 +77,9 @@ impl <T: Copy, const Size: usize> SevenMemArray <T, Size> {
         self.address().read()
     }
 
-    pub unsafe fn get(&self, idx: usize) -> T {
+    pub unsafe fn index(&self, idx: usize) -> T {
         if idx >= Size {
-            panic!();
+            panic!("Out of bound access");
         }
 
         let ptr = self.address() as *const T;
@@ -90,9 +90,9 @@ impl <T: Copy, const Size: usize> SevenMemArray <T, Size> {
         self.address().write(val)
     }
 
-    pub unsafe fn set(&self, idx: usize, val: T) {
+    pub unsafe fn index_mut(&self, idx: usize, val: T) {
         if idx >= Size {
-            panic!();
+            panic!("Out of bound access");
         }
 
         let ptr = self.address() as *mut T;

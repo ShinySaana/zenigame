@@ -7,7 +7,7 @@ extern "C" fn vblank_callback(_irqs: u16) {
     use seven_sys::addresses::BG_PALETTE;
 
     unsafe {
-        BG_PALETTE.set(0, BG_PALETTE.get(0) + 1)
+        BG_PALETTE.index_mut(0, BG_PALETTE.index(0) + 1)
     }
 }
 
