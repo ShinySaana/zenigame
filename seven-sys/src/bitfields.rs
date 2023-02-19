@@ -1,11 +1,8 @@
-use core::ffi::c_void;
-
 macro_rules! BIT {
     ($n:expr) => {
         1 << $n
     };
 }
-
 
 macro_rules! BITS {
     ($n:expr) => {
@@ -39,6 +36,12 @@ BITFIELD_FN!(DMA_DST);
 BITFIELD_FN!(DMA_SRC);
 BITFIELD_FN!(DMA_START);
 
+// seven/hw/serial.h
+BITFIELD_FN!(SIO_MODE);
+BITFIELD_FN!(R_MODE);
+
+// seven/hw/timer.h
+BITFIELD_FN!(TIMER_FREQ);
 
 // seven/hw/video.h
 BITFIELD_FN!(VIDEO_MODE);
@@ -49,11 +52,49 @@ BITFIELD_FN!(BG_MAP_BASE);
 BITFIELD_FN!(BG_SIZE);
 BITFIELD_FN!(BG_AFFINE_SIZE);
 
-// seven/hw/video/memory.h
-pub const fn GFX_BASE_ADDR(n: u32) -> *mut c_void {
-    (crate::addresses::MEM_VRAM_ADDR + (n << 14) as usize) as *mut c_void 
-}
+// seven/hw/waitstate.h
+BITFIELD_FN!(WAIT_SRAM);
+BITFIELD_FN!(WAIT_ROM_N);
+BITFIELD_FN!(WAIT_ROM_S);
 
-pub const fn MAP_BASE_ADDR(n: u32) -> *mut c_void {
-    (crate::addresses::MEM_VRAM_ADDR + (n << 11) as usize) as *mut c_void 
-}
+// seven/hw/serial/multiplayer.h
+BITFIELD_FN!(MULTI_BAUD);
+BITFIELD_FN!(MULTI_CLIENT_ID);
+
+// seven/hw/serial/spi.h
+BITFIELD_FN!(SPI_CLOCK);
+
+// seven/hw/serial/uart.h
+BITFIELD_FN!(UART_BAUD);
+
+// seven/hw/video/gb_tiled.h
+BITFIELD_FN!(TILE_NUMBER);
+BITFIELD_FN!(TILE_PALETTE);
+
+// seven/hw/video/blend.h
+BITFIELD_FN!(BLEND_MODE);
+
+// seven/hw/video/color.h
+BITFIELD_FN!(COLOR_R);
+BITFIELD_FN!(COLOR_G);
+BITFIELD_FN!(COLOR_B);
+
+// seven/hw/video/mosaic.h
+BITFIELD_FN!(MOSAIC_BG_H);
+BITFIELD_FN!(MOSAIC_BG_V);
+BITFIELD_FN!(MOSAIC_OBJ_H);
+BITFIELD_FN!(MOSAIC_OBJ_V);
+
+// seven/hw/video/object.h
+BITFIELD_FN!(OBJ_Y_POS);
+BITFIELD_FN!(OBJ_MODE);
+BITFIELD_FN!(OBJ_TYPE);
+BITFIELD_FN!(OBJ_SHAPE);
+
+BITFIELD_FN!(OBJ_X_POS);
+BITFIELD_FN!(OBJ_AFFINE_MATRIX);
+BITFIELD_FN!(OBJ_SIZE);
+
+BITFIELD_FN!(OBJ_TILE_NUMBER);
+BITFIELD_FN!(OBJ_PRIORITY);
+BITFIELD_FN!(OBJ_PALETTE_NUMBER);

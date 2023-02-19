@@ -1,9 +1,6 @@
 #![no_std]
 #![feature(start)]
 
-use core::ffi::CStr;
-use core::fmt::Write;
-
 extern crate zenigame;
 
 extern "C" fn vblank_callback(_irqs: u16) {
