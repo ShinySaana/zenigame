@@ -28,7 +28,12 @@ impl <T: Copy, const Size: usize> SevenVolArray <T, Size> {
     }
 
     pub unsafe fn get(&self, idx: usize) -> T {
-        self.read()[idx]
+        if idx >= Size {
+            panic!();
+        }
+
+        let ptr = self.address() as *const T;
+        *ptr.add(idx)
     }
 
     pub unsafe fn write(&self, val: [T; Size]) {
@@ -36,9 +41,12 @@ impl <T: Copy, const Size: usize> SevenVolArray <T, Size> {
     }
 
     pub unsafe fn set(&self, idx: usize, val: T) {
-        let mut temp = self.read();
-        temp[idx] = val;
-        self.write(temp);
+        if idx >= Size {
+            panic!();
+        }
+
+        let ptr = self.address() as *mut T;
+        *ptr.add(idx) = val;
     }
 }
 
@@ -70,7 +78,12 @@ impl <T: Copy, const Size: usize> SevenMemArray <T, Size> {
     }
 
     pub unsafe fn get(&self, idx: usize) -> T {
-        self.read()[idx]
+        if idx >= Size {
+            panic!();
+        }
+
+        let ptr = self.address() as *const T;
+        *ptr.add(idx)
     }
 
     pub unsafe fn write(&self, val: [T; Size]) {
@@ -78,9 +91,12 @@ impl <T: Copy, const Size: usize> SevenMemArray <T, Size> {
     }
 
     pub unsafe fn set(&self, idx: usize, val: T) {
-        let mut temp = self.read();
-        temp[idx] = val;
-        self.write(temp);
+        if idx >= Size {
+            panic!();
+        }
+
+        let ptr = self.address() as *mut T;
+        *ptr.add(idx) = val;
     }
 }
 
@@ -295,10 +311,6 @@ memaddr! {
 
     MODE5_FRAME_0,  MEM_VRAM_ADDR,          crate::bindings::Mode5Frame
     MODE5_FRAME_1,  MEM_VRAM_ADDR + 0xA000, crate::bindings::Mode5Frame
-
-    // seven/hw/video/memory.h
-    BG_PALETTE,     MEM_PALETTE_ADRR,       crate::bindings::Palette
-    OBJ_PALETTE,    MEM_PALETTE_ADRR + 512, crate::bindings::Palette
 }
 
 macro_rules! memarray {
@@ -311,9 +323,12 @@ macro_rules! memarray {
 
 memarray! {
     // seven/hw/video/memory.h
-    BG_PALETTE_BANK,    MEM_PALETTE_ADRR,       crate::bindings::PaletteBank, 16
-    OBJ_PALETTE_BANK,   MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank, 16
+    BG_PALETTE_BANK,    MEM_PALETTE_ADRR,       crate::bindings::PaletteBank,   16
+    OBJ_PALETTE_BANK,   MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank,   16
 
-    OAM_OBJS,           MEM_OAM_ADDR,           crate::bindings::Object, 128
+    BG_PALETTE,         MEM_PALETTE_ADRR,       crate::bindings::Color,         256     
+    OBJ_PALETTE,        MEM_PALETTE_ADRR + 512, crate::bindings::Color,         256
+
+    OAM_OBJS,           MEM_OAM_ADDR,           crate::bindings::Object,        128
 }
 

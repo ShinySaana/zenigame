@@ -7,9 +7,7 @@ extern "C" fn vblank_callback(_irqs: u16) {
     use seven_sys::addresses::BG_PALETTE;
 
     unsafe {
-        let mut value = BG_PALETTE.read();
-        value[0] += 1;
-        BG_PALETTE.write(value)
+        BG_PALETTE.set(0, BG_PALETTE.get(0) + 1)
     }
 }
 
