@@ -311,6 +311,10 @@ memaddr! {
 
     MODE5_FRAME_0,  MEM_VRAM_ADDR,          crate::bindings::Mode5Frame
     MODE5_FRAME_1,  MEM_VRAM_ADDR + 0xA000, crate::bindings::Mode5Frame
+
+    // seven/hw/video/memory.h
+    BG_PALETTE,     MEM_PALETTE_ADRR,       crate::bindings::Palette     
+    OBJ_PALETTE,    MEM_PALETTE_ADRR + 512, crate::bindings::Palette
 }
 
 macro_rules! memarray {
@@ -323,14 +327,13 @@ macro_rules! memarray {
 
 memarray! {
     // seven/hw/video/memory.h
-
-    // Diverges from the original API as of the time of writing
-    BG_PALETTE,         MEM_PALETTE_ADRR,       crate::bindings::Color,         256     
-    OBJ_PALETTE,        MEM_PALETTE_ADRR + 512, crate::bindings::Color,         256
-
     BG_PALETTE_BANK,    MEM_PALETTE_ADRR,       crate::bindings::PaletteBank,   16
     OBJ_PALETTE_BANK,   MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank,   16
 
     OAM_OBJS,           MEM_OAM_ADDR,           crate::bindings::Object,        128
+
+    // not included in libseven itself
+    BG_PALETTE_COLOR,   MEM_PALETTE_ADRR,       crate::bindings::Color,         256
+    OBJ_PALETTE_COLOR,  MEM_PALETTE_ADRR + 512, crate::bindings::Color,         256
 }
 

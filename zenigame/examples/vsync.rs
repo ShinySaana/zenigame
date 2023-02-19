@@ -4,10 +4,10 @@
 extern crate zenigame;
 
 extern "C" fn vblank_callback(_irqs: u16) {
-    use seven_sys::addresses::BG_PALETTE;
+    use seven_sys::addresses::BG_PALETTE_COLOR;
 
     unsafe {
-        BG_PALETTE.index_mut(0, BG_PALETTE.index(0) + 1)
+        BG_PALETTE_COLOR.index_mut(0, BG_PALETTE_COLOR.index(0) + 1)
     }
 }
 
