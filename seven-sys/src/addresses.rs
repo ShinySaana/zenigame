@@ -323,11 +323,13 @@ macro_rules! memarray {
 
 memarray! {
     // seven/hw/video/memory.h
-    BG_PALETTE_BANK,    MEM_PALETTE_ADRR,       crate::bindings::PaletteBank,   16
-    OBJ_PALETTE_BANK,   MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank,   16
 
+    // Diverges from the original API as of the time of writing
     BG_PALETTE,         MEM_PALETTE_ADRR,       crate::bindings::Color,         256     
     OBJ_PALETTE,        MEM_PALETTE_ADRR + 512, crate::bindings::Color,         256
+
+    BG_PALETTE_BANK,    MEM_PALETTE_ADRR,       crate::bindings::PaletteBank,   16
+    OBJ_PALETTE_BANK,   MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank,   16
 
     OAM_OBJS,           MEM_OAM_ADDR,           crate::bindings::Object,        128
 }
