@@ -85,13 +85,13 @@ pub const true_: u32 = 1;
 pub const false_: u32 = 0;
 pub const LIBSEVEN_VERSION_MAJOR: u32 = 0;
 pub const LIBSEVEN_VERSION_MINOR: u32 = 17;
-pub const LIBSEVEN_VERSION_PATCH: u32 = 0;
+pub const LIBSEVEN_VERSION_PATCH: u32 = 2;
 pub const BF_PSR_MODE_OFFSET: u32 = 0;
 pub const BF_PSR_MODE_LENGTH: u32 = 5;
 pub const BF_PSR_CONTROL_BITS_OFFSET: u32 = 0;
 pub const BF_PSR_CONTROL_BITS_LENGTH: u32 = 8;
 pub const BF_PSR_FLAGS_OFFSET: u32 = 28;
-pub const BF_PSR_FLAGS_LENGHT: u32 = 4;
+pub const BF_PSR_FLAGS_LENGTH: u32 = 4;
 pub const BF_DMA_DST_OFFSET: u32 = 5;
 pub const BF_DMA_DST_LENGTH: u32 = 2;
 pub const BF_DMA_SRC_OFFSET: u32 = 7;
@@ -124,6 +124,10 @@ pub const BF_WAIT_ROM_N_OFFSET: u32 = 2;
 pub const BF_WAIT_ROM_N_LENGTH: u32 = 2;
 pub const BF_WAIT_ROM_S_OFFSET: u32 = 4;
 pub const BF_WAIT_ROM_S_LENGTH: u32 = 1;
+pub const BF_MULTI_BAUD_OFFSET: u32 = 0;
+pub const BF_MULTI_BAUD_LENGTH: u32 = 2;
+pub const BF_MULTI_CLIENT_ID_OFFSET: u32 = 4;
+pub const BF_MULTI_CLIENT_ID_LENGTH: u32 = 2;
 pub const BF_SPI_CLOCK_OFFSET: u32 = 0;
 pub const BF_SPI_CLOCK_LENGTH: u32 = 2;
 pub const BF_UART_BAUD_OFFSET: u32 = 0;
@@ -234,68 +238,80 @@ pub type int_fast8_t = i8;
 pub type uint_fast8_t = u8;
 pub type intmax_t = ::core::ffi::c_longlong;
 pub type uintmax_t = ::core::ffi::c_ulonglong;
-pub const SoftwareInterruptNumber_SWI_SOFTRESET: SoftwareInterruptNumber = 0;
-pub const SoftwareInterruptNumber_SWI_REGISTERRAMRESET: SoftwareInterruptNumber = 1;
-pub const SoftwareInterruptNumber_SWI_HALT: SoftwareInterruptNumber = 2;
-pub const SoftwareInterruptNumber_SWI_STOP: SoftwareInterruptNumber = 3;
-pub const SoftwareInterruptNumber_SWI_INTRWAIT: SoftwareInterruptNumber = 4;
-pub const SoftwareInterruptNumber_SWI_VBLANKINTRWAIT: SoftwareInterruptNumber = 5;
-pub const SoftwareInterruptNumber_SWI_DIV: SoftwareInterruptNumber = 6;
-pub const SoftwareInterruptNumber_SWI_SQRT: SoftwareInterruptNumber = 8;
-pub const SoftwareInterruptNumber_SWI_ARCTAN: SoftwareInterruptNumber = 9;
-pub const SoftwareInterruptNumber_SWI_ARCTAN2: SoftwareInterruptNumber = 10;
-pub const SoftwareInterruptNumber_SWI_CPUSET: SoftwareInterruptNumber = 11;
-pub const SoftwareInterruptNumber_SWI_CPUFASTSET: SoftwareInterruptNumber = 12;
-pub const SoftwareInterruptNumber_SWI_BIOSCHECKSUM: SoftwareInterruptNumber = 13;
-pub const SoftwareInterruptNumber_SWI_BGAFFINESET: SoftwareInterruptNumber = 14;
-pub const SoftwareInterruptNumber_SWI_OBJAFFINESET: SoftwareInterruptNumber = 15;
-pub const SoftwareInterruptNumber_SWI_BITUNPACK: SoftwareInterruptNumber = 16;
-pub const SoftwareInterruptNumber_SWI_LZ77UNCOMPWRAM: SoftwareInterruptNumber = 17;
-pub const SoftwareInterruptNumber_SWI_LZ77UNCOMPVRAM: SoftwareInterruptNumber = 18;
-pub const SoftwareInterruptNumber_SWI_HUFFUNCOMP: SoftwareInterruptNumber = 19;
-pub const SoftwareInterruptNumber_SWI_RLUNCOMPWRAM: SoftwareInterruptNumber = 20;
-pub const SoftwareInterruptNumber_SWI_RLUNCOMPVRAM: SoftwareInterruptNumber = 21;
-pub const SoftwareInterruptNumber_SWI_DIFF8BITUNFILTERWRAM: SoftwareInterruptNumber = 22;
-pub const SoftwareInterruptNumber_SWI_DIFF8BITUNFILTERVRAM: SoftwareInterruptNumber = 23;
-pub const SoftwareInterruptNumber_SWI_DIFF16BITUNFILTER: SoftwareInterruptNumber = 24;
-pub const SoftwareInterruptNumber_SWI_SOUNDBIAS: SoftwareInterruptNumber = 25;
-pub const SoftwareInterruptNumber_SWI_SOUNDDRIVERINIT: SoftwareInterruptNumber = 26;
-pub const SoftwareInterruptNumber_SWI_SOUNDDRIVERMODE: SoftwareInterruptNumber = 27;
-pub const SoftwareInterruptNumber_SWI_SOUNDDRIVERMAIN: SoftwareInterruptNumber = 28;
-pub const SoftwareInterruptNumber_SWI_SOUNDDRIVERVSYNC: SoftwareInterruptNumber = 29;
-pub const SoftwareInterruptNumber_SWI_SOUNDCHANNELCLEAR: SoftwareInterruptNumber = 30;
-pub const SoftwareInterruptNumber_SWI_MIDIKEY2FREQ: SoftwareInterruptNumber = 31;
-pub const SoftwareInterruptNumber_SWI_MUSICPLAYEROPEN: SoftwareInterruptNumber = 32;
-pub const SoftwareInterruptNumber_SWI_MUSICPLAYERSTART: SoftwareInterruptNumber = 33;
-pub const SoftwareInterruptNumber_SWI_MUSICPLAYERSTOP: SoftwareInterruptNumber = 34;
-pub const SoftwareInterruptNumber_SWI_MUSICPLAYERCONTINUE: SoftwareInterruptNumber = 35;
-pub const SoftwareInterruptNumber_SWI_MUSICPLAYERFADEOUT: SoftwareInterruptNumber = 36;
-pub const SoftwareInterruptNumber_SWI_MULTIBOOT: SoftwareInterruptNumber = 37;
-pub const SoftwareInterruptNumber_SWI_HARDRESET: SoftwareInterruptNumber = 38;
-pub const SoftwareInterruptNumber_SWI_SOUNDDRIVERVSYNCOFF: SoftwareInterruptNumber = 40;
-pub const SoftwareInterruptNumber_SWI_SOUNDDRIVERVSYNCON: SoftwareInterruptNumber = 41;
-pub type SoftwareInterruptNumber = ::core::ffi::c_uint;
-pub const GpioDirection_GPIO_IN: GpioDirection = 0;
-pub const GpioDirection_GPIO_OUT: GpioDirection = 1;
-pub type GpioDirection = ::core::ffi::c_uint;
-pub const GpioControl_GPIO_WRITEONLY: GpioControl = 0;
-pub const GpioControl_GPIO_READWRITE: GpioControl = 1;
-pub type GpioControl = ::core::ffi::c_uint;
-pub const ProgramStatusRegister_PSR_MODE_USR: ProgramStatusRegister = 16;
-pub const ProgramStatusRegister_PSR_MODE_FIQ: ProgramStatusRegister = 17;
-pub const ProgramStatusRegister_PSR_MODE_IRQ: ProgramStatusRegister = 18;
-pub const ProgramStatusRegister_PSR_MODE_SVC: ProgramStatusRegister = 19;
-pub const ProgramStatusRegister_PSR_MODE_ABT: ProgramStatusRegister = 23;
-pub const ProgramStatusRegister_PSR_MODE_UND: ProgramStatusRegister = 27;
-pub const ProgramStatusRegister_PSR_MODE_SYS: ProgramStatusRegister = 31;
-pub const ProgramStatusRegister_PSR_STATE_THUMB: ProgramStatusRegister = 32;
-pub const ProgramStatusRegister_PSR_FIQ_DISABLE: ProgramStatusRegister = 64;
-pub const ProgramStatusRegister_PSR_IRQ_DISABLE: ProgramStatusRegister = 128;
-pub const ProgramStatusRegister_PSR_FLAG_V: ProgramStatusRegister = 268435456;
-pub const ProgramStatusRegister_PSR_FLAG_C: ProgramStatusRegister = 536870912;
-pub const ProgramStatusRegister_PSR_FLAG_Z: ProgramStatusRegister = 1073741824;
-pub const ProgramStatusRegister_PSR_FLAG_N: ProgramStatusRegister = -2147483648;
-pub type ProgramStatusRegister = ::core::ffi::c_int;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SoftwareInterruptNumber {
+    SWI_SOFTRESET = 0,
+    SWI_REGISTERRAMRESET = 1,
+    SWI_HALT = 2,
+    SWI_STOP = 3,
+    SWI_INTRWAIT = 4,
+    SWI_VBLANKINTRWAIT = 5,
+    SWI_DIV = 6,
+    SWI_SQRT = 8,
+    SWI_ARCTAN = 9,
+    SWI_ARCTAN2 = 10,
+    SWI_CPUSET = 11,
+    SWI_CPUFASTSET = 12,
+    SWI_BIOSCHECKSUM = 13,
+    SWI_BGAFFINESET = 14,
+    SWI_OBJAFFINESET = 15,
+    SWI_BITUNPACK = 16,
+    SWI_LZ77UNCOMPWRAM = 17,
+    SWI_LZ77UNCOMPVRAM = 18,
+    SWI_HUFFUNCOMP = 19,
+    SWI_RLUNCOMPWRAM = 20,
+    SWI_RLUNCOMPVRAM = 21,
+    SWI_DIFF8BITUNFILTERWRAM = 22,
+    SWI_DIFF8BITUNFILTERVRAM = 23,
+    SWI_DIFF16BITUNFILTER = 24,
+    SWI_SOUNDBIAS = 25,
+    SWI_SOUNDDRIVERINIT = 26,
+    SWI_SOUNDDRIVERMODE = 27,
+    SWI_SOUNDDRIVERMAIN = 28,
+    SWI_SOUNDDRIVERVSYNC = 29,
+    SWI_SOUNDCHANNELCLEAR = 30,
+    SWI_MIDIKEY2FREQ = 31,
+    SWI_MUSICPLAYEROPEN = 32,
+    SWI_MUSICPLAYERSTART = 33,
+    SWI_MUSICPLAYERSTOP = 34,
+    SWI_MUSICPLAYERCONTINUE = 35,
+    SWI_MUSICPLAYERFADEOUT = 36,
+    SWI_MULTIBOOT = 37,
+    SWI_HARDRESET = 38,
+    SWI_SOUNDDRIVERVSYNCOFF = 40,
+    SWI_SOUNDDRIVERVSYNCON = 41,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum GpioDirection {
+    GPIO_IN = 0,
+    GPIO_OUT = 1,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum GpioControl {
+    GPIO_WRITEONLY = 0,
+    GPIO_READWRITE = 1,
+}
+#[repr(i32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum ProgramStatusRegister {
+    PSR_MODE_USR = 16,
+    PSR_MODE_FIQ = 17,
+    PSR_MODE_IRQ = 18,
+    PSR_MODE_SVC = 19,
+    PSR_MODE_ABT = 23,
+    PSR_MODE_UND = 27,
+    PSR_MODE_SYS = 31,
+    PSR_STATE_THUMB = 32,
+    PSR_FIQ_DISABLE = 64,
+    PSR_IRQ_DISABLE = 128,
+    PSR_FLAG_V = 268435456,
+    PSR_FLAG_C = 536870912,
+    PSR_FLAG_Z = 1073741824,
+    PSR_FLAG_N = -2147483648,
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct DMA {
@@ -339,72 +355,100 @@ fn bindgen_test_layout_DMA() {
         concat!("Offset of field: ", stringify!(DMA), "::", stringify!(cnt))
     );
 }
-pub const DMAControl_DMA_DST_INCREMENT: DMAControl = 0;
-pub const DMAControl_DMA_DST_DECREMENT: DMAControl = 32;
-pub const DMAControl_DMA_DST_FIXED: DMAControl = 64;
-pub const DMAControl_DMA_DST_RELOAD: DMAControl = 96;
-pub const DMAControl_DMA_SRC_INCREMENT: DMAControl = 0;
-pub const DMAControl_DMA_SRC_DECREMENT: DMAControl = 128;
-pub const DMAControl_DMA_SRC_FIXED: DMAControl = 256;
-pub const DMAControl_DMA_REPEAT: DMAControl = 512;
-pub const DMAControl_DMA_32BIT: DMAControl = 1024;
-pub const DMAControl_DMA_16BIT: DMAControl = 0;
-pub const DMAControl_DMA_START_NOW: DMAControl = 0;
-pub const DMAControl_DMA_START_HBLANK: DMAControl = 4096;
-pub const DMAControl_DMA_START_VBLANK: DMAControl = 8192;
-pub const DMAControl_DMA_START_SOUND: DMAControl = 12288;
-pub const DMAControl_DMA_START_CAPTURE: DMAControl = 12288;
-pub const DMAControl_DMA_IRQ_ENABLE: DMAControl = 16384;
-pub const DMAControl_DMA_ENABLE: DMAControl = 32768;
-pub type DMAControl = ::core::ffi::c_uint;
-pub const DMAControlPreset_DMA_PRESET_COPY16: DMAControlPreset = 0;
-pub const DMAControlPreset_DMA_PRESET_COPY32: DMAControlPreset = 1024;
-pub const DMAControlPreset_DMA_PRESET_FILL16: DMAControlPreset = 256;
-pub const DMAControlPreset_DMA_PRESET_FILL32: DMAControlPreset = 1280;
-pub const DMAControlPreset_DMA_PRESET_HBLANK: DMAControlPreset = 4608;
-pub const DMAControlPreset_DMA_PRESET_VBLANK: DMAControlPreset = 8704;
-pub const DMAControlPreset_DMA_PRESET_SOUND: DMAControlPreset = 12800;
-pub const DMAControlPreset_DMA_PRESET_CAPTURE: DMAControlPreset = 12800;
-pub type DMAControlPreset = ::core::ffi::c_uint;
+impl DMAControl {
+    pub const DMA_SRC_INCREMENT: DMAControl = DMAControl::DMA_DST_INCREMENT;
+}
+impl DMAControl {
+    pub const DMA_16BIT: DMAControl = DMAControl::DMA_DST_INCREMENT;
+}
+impl DMAControl {
+    pub const DMA_START_NOW: DMAControl = DMAControl::DMA_DST_INCREMENT;
+}
+impl DMAControl {
+    pub const DMA_START_CAPTURE: DMAControl = DMAControl::DMA_START_SOUND;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum DMAControl {
+    DMA_DST_INCREMENT = 0,
+    DMA_DST_DECREMENT = 32,
+    DMA_DST_FIXED = 64,
+    DMA_DST_RELOAD = 96,
+    DMA_SRC_DECREMENT = 128,
+    DMA_SRC_FIXED = 256,
+    DMA_REPEAT = 512,
+    DMA_32BIT = 1024,
+    DMA_START_HBLANK = 4096,
+    DMA_START_VBLANK = 8192,
+    DMA_START_SOUND = 12288,
+    DMA_IRQ_ENABLE = 16384,
+    DMA_ENABLE = 32768,
+}
+impl DMAControlPreset {
+    pub const DMA_PRESET_CAPTURE: DMAControlPreset = DMAControlPreset::DMA_PRESET_SOUND;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum DMAControlPreset {
+    DMA_PRESET_COPY16 = 0,
+    DMA_PRESET_COPY32 = 1024,
+    DMA_PRESET_FILL16 = 256,
+    DMA_PRESET_FILL32 = 1280,
+    DMA_PRESET_HBLANK = 4608,
+    DMA_PRESET_VBLANK = 8704,
+    DMA_PRESET_SOUND = 12800,
+}
 extern "C" {
     pub fn dmaSet(channel: u32, dma: DMA);
 }
-pub const Key_KEY_A: Key = 1;
-pub const Key_KEY_B: Key = 2;
-pub const Key_KEY_SELECT: Key = 4;
-pub const Key_KEY_START: Key = 8;
-pub const Key_KEY_RIGHT: Key = 16;
-pub const Key_KEY_LEFT: Key = 32;
-pub const Key_KEY_UP: Key = 64;
-pub const Key_KEY_DOWN: Key = 128;
-pub const Key_KEY_R: Key = 256;
-pub const Key_KEY_L: Key = 512;
-pub type Key = ::core::ffi::c_uint;
-pub const KeyGroup_KEYS_DPAD_X: KeyGroup = 48;
-pub const KeyGroup_KEYS_DPAD_Y: KeyGroup = 192;
-pub const KeyGroup_KEYS_DPAD: KeyGroup = 240;
-pub const KeyGroup_KEYS_AB: KeyGroup = 3;
-pub const KeyGroup_KEYS_LR: KeyGroup = 768;
-pub const KeyGroup_KEYS_STARTSELECT: KeyGroup = 12;
-pub const KeyGroup_KEYS_BUTTONS: KeyGroup = 783;
-pub const KeyGroup_KEYS_ALL: KeyGroup = 1023;
-pub type KeyGroup = ::core::ffi::c_uint;
-pub const KeyIndex_KEY_INDEX_A: KeyIndex = 0;
-pub const KeyIndex_KEY_INDEX_B: KeyIndex = 1;
-pub const KeyIndex_KEY_INDEX_SELECT: KeyIndex = 2;
-pub const KeyIndex_KEY_INDEX_START: KeyIndex = 3;
-pub const KeyIndex_KEY_INDEX_RIGHT: KeyIndex = 4;
-pub const KeyIndex_KEY_INDEX_LEFT: KeyIndex = 5;
-pub const KeyIndex_KEY_INDEX_UP: KeyIndex = 6;
-pub const KeyIndex_KEY_INDEX_DOWN: KeyIndex = 7;
-pub const KeyIndex_KEY_INDEX_R: KeyIndex = 8;
-pub const KeyIndex_KEY_INDEX_L: KeyIndex = 9;
-pub const KeyIndex_KEY_INDEX_MAX: KeyIndex = 10;
-pub type KeyIndex = ::core::ffi::c_uint;
-pub const KeyIRQ_KEY_IRQ_ENABLE: KeyIRQ = 16384;
-pub const KeyIRQ_KEY_IRQ_PRESS_ALL: KeyIRQ = 32768;
-pub const KeyIRQ_KEY_IRQ_PRESS_ANY: KeyIRQ = 0;
-pub type KeyIRQ = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum Key {
+    KEY_A = 1,
+    KEY_B = 2,
+    KEY_SELECT = 4,
+    KEY_START = 8,
+    KEY_RIGHT = 16,
+    KEY_LEFT = 32,
+    KEY_UP = 64,
+    KEY_DOWN = 128,
+    KEY_R = 256,
+    KEY_L = 512,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum KeyGroup {
+    KEYS_DPAD_X = 48,
+    KEYS_DPAD_Y = 192,
+    KEYS_DPAD = 240,
+    KEYS_AB = 3,
+    KEYS_LR = 768,
+    KEYS_STARTSELECT = 12,
+    KEYS_BUTTONS = 783,
+    KEYS_ALL = 1023,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum KeyIndex {
+    KEY_INDEX_A = 0,
+    KEY_INDEX_B = 1,
+    KEY_INDEX_SELECT = 2,
+    KEY_INDEX_START = 3,
+    KEY_INDEX_RIGHT = 4,
+    KEY_INDEX_LEFT = 5,
+    KEY_INDEX_UP = 6,
+    KEY_INDEX_DOWN = 7,
+    KEY_INDEX_R = 8,
+    KEY_INDEX_L = 9,
+    KEY_INDEX_MAX = 10,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum KeyIRQ {
+    KEY_IRQ_ENABLE = 16384,
+    KEY_IRQ_PRESS_ALL = 32768,
+    KEY_IRQ_PRESS_ANY = 0,
+}
 #[repr(C)]
 #[repr(align(4))]
 #[derive(Debug, Copy, Clone)]
@@ -477,43 +521,52 @@ extern "C" {
 extern "C" {
     pub fn inputAxisAB(i: InputState) -> i32;
 }
-pub const IRQ_IRQ_VBLANK: IRQ = 1;
-pub const IRQ_IRQ_HBLANK: IRQ = 2;
-pub const IRQ_IRQ_VCOUNT: IRQ = 4;
-pub const IRQ_IRQ_TIMER_0: IRQ = 8;
-pub const IRQ_IRQ_TIMER_1: IRQ = 16;
-pub const IRQ_IRQ_TIMER_2: IRQ = 32;
-pub const IRQ_IRQ_TIMER_3: IRQ = 64;
-pub const IRQ_IRQ_SERIAL: IRQ = 128;
-pub const IRQ_IRQ_DMA_0: IRQ = 256;
-pub const IRQ_IRQ_DMA_1: IRQ = 512;
-pub const IRQ_IRQ_DMA_2: IRQ = 1024;
-pub const IRQ_IRQ_DMA_3: IRQ = 2048;
-pub const IRQ_IRQ_KEYPAD: IRQ = 4096;
-pub const IRQ_IRQ_CARTRIDGE: IRQ = 8192;
-pub type IRQ = ::core::ffi::c_uint;
-pub const IRQGroup_IRQS_BLANK: IRQGroup = 3;
-pub const IRQGroup_IRQS_TIMER: IRQGroup = 120;
-pub const IRQGroup_IRQS_DMA: IRQGroup = 3840;
-pub const IRQGroup_IRQS_EXTERNAL: IRQGroup = 12416;
-pub const IRQGroup_IRQS_ALL: IRQGroup = 16383;
-pub type IRQGroup = ::core::ffi::c_uint;
-pub const IRQIndex_IRQ_INDEX_VBLANK: IRQIndex = 0;
-pub const IRQIndex_IRQ_INDEX_HBLANK: IRQIndex = 1;
-pub const IRQIndex_IRQ_INDEX_VCOUNT: IRQIndex = 2;
-pub const IRQIndex_IRQ_INDEX_TIMER_0: IRQIndex = 3;
-pub const IRQIndex_IRQ_INDEX_TIMER_1: IRQIndex = 4;
-pub const IRQIndex_IRQ_INDEX_TIMER_2: IRQIndex = 5;
-pub const IRQIndex_IRQ_INDEX_TIMER_3: IRQIndex = 6;
-pub const IRQIndex_IRQ_INDEX_SERIAL: IRQIndex = 7;
-pub const IRQIndex_IRQ_INDEX_DMA_0: IRQIndex = 8;
-pub const IRQIndex_IRQ_INDEX_DMA_1: IRQIndex = 9;
-pub const IRQIndex_IRQ_INDEX_DMA_2: IRQIndex = 10;
-pub const IRQIndex_IRQ_INDEX_DMA_3: IRQIndex = 11;
-pub const IRQIndex_IRQ_INDEX_KEYPAD: IRQIndex = 12;
-pub const IRQIndex_IRQ_INDEX_CARTRIDGE: IRQIndex = 13;
-pub const IRQIndex_IRQ_INDEX_MAX: IRQIndex = 14;
-pub type IRQIndex = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum IRQ {
+    IRQ_VBLANK = 1,
+    IRQ_HBLANK = 2,
+    IRQ_VCOUNT = 4,
+    IRQ_TIMER_0 = 8,
+    IRQ_TIMER_1 = 16,
+    IRQ_TIMER_2 = 32,
+    IRQ_TIMER_3 = 64,
+    IRQ_SERIAL = 128,
+    IRQ_DMA_0 = 256,
+    IRQ_DMA_1 = 512,
+    IRQ_DMA_2 = 1024,
+    IRQ_DMA_3 = 2048,
+    IRQ_KEYPAD = 4096,
+    IRQ_CARTRIDGE = 8192,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum IRQGroup {
+    IRQS_BLANK = 3,
+    IRQS_TIMER = 120,
+    IRQS_DMA = 3840,
+    IRQS_EXTERNAL = 12416,
+    IRQS_ALL = 16383,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum IRQIndex {
+    IRQ_INDEX_VBLANK = 0,
+    IRQ_INDEX_HBLANK = 1,
+    IRQ_INDEX_VCOUNT = 2,
+    IRQ_INDEX_TIMER_0 = 3,
+    IRQ_INDEX_TIMER_1 = 4,
+    IRQ_INDEX_TIMER_2 = 5,
+    IRQ_INDEX_TIMER_3 = 6,
+    IRQ_INDEX_SERIAL = 7,
+    IRQ_INDEX_DMA_0 = 8,
+    IRQ_INDEX_DMA_1 = 9,
+    IRQ_INDEX_DMA_2 = 10,
+    IRQ_INDEX_DMA_3 = 11,
+    IRQ_INDEX_KEYPAD = 12,
+    IRQ_INDEX_CARTRIDGE = 13,
+    IRQ_INDEX_MAX = 14,
+}
 pub type IsrFn = ::core::option::Option<unsafe extern "C" fn()>;
 pub type IrqHandlerFn = ::core::option::Option<unsafe extern "C" fn(arg1: u16)>;
 extern "C" {
@@ -555,21 +608,37 @@ extern "C" {
         arg: *mut ::core::ffi::c_void,
     );
 }
-pub const SerialControl_SIO_MODE_SPI_8BIT: SerialControl = 0;
-pub const SerialControl_SIO_MODE_SPI_32BIT: SerialControl = 4096;
-pub const SerialControl_SIO_MODE_MULTI: SerialControl = 8192;
-pub const SerialControl_SIO_MODE_UART: SerialControl = 12288;
-pub const SerialControl_SIO_MODE_RAW: SerialControl = 0;
-pub const SerialControl_SIO_MODE_JOYBUS: SerialControl = 0;
-pub const SerialControl_SIO_IRQ_ENABLE: SerialControl = 16384;
-pub type SerialControl = ::core::ffi::c_uint;
-pub const RControl_R_MODE_SPI_8BIT: RControl = 0;
-pub const RControl_R_MODE_SPI_32BIT: RControl = 0;
-pub const RControl_R_MODE_MULTI: RControl = 0;
-pub const RControl_R_MODE_UART: RControl = 0;
-pub const RControl_R_MODE_RAW: RControl = 32768;
-pub const RControl_R_MODE_JOYBUS: RControl = 49152;
-pub type RControl = ::core::ffi::c_uint;
+impl SerialControl {
+    pub const SIO_MODE_RAW: SerialControl = SerialControl::SIO_MODE_SPI_8BIT;
+}
+impl SerialControl {
+    pub const SIO_MODE_JOYBUS: SerialControl = SerialControl::SIO_MODE_SPI_8BIT;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SerialControl {
+    SIO_MODE_SPI_8BIT = 0,
+    SIO_MODE_SPI_32BIT = 4096,
+    SIO_MODE_MULTI = 8192,
+    SIO_MODE_UART = 12288,
+    SIO_IRQ_ENABLE = 16384,
+}
+impl RControl {
+    pub const R_MODE_SPI_32BIT: RControl = RControl::R_MODE_SPI_8BIT;
+}
+impl RControl {
+    pub const R_MODE_MULTI: RControl = RControl::R_MODE_SPI_8BIT;
+}
+impl RControl {
+    pub const R_MODE_UART: RControl = RControl::R_MODE_SPI_8BIT;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum RControl {
+    R_MODE_SPI_8BIT = 0,
+    R_MODE_RAW = 32768,
+    R_MODE_JOYBUS = 49152,
+}
 extern "C" {
     pub fn sramRead(dst: *mut ::core::ffi::c_void, len: usize);
 }
@@ -612,14 +681,17 @@ extern "C" {
 extern "C" {
     pub fn sramClearAt64(len: usize, off: usize);
 }
-pub const TimerControl_TIMER_FREQ_16MHZ: TimerControl = 0;
-pub const TimerControl_TIMER_FREQ_262KHZ: TimerControl = 1;
-pub const TimerControl_TIMER_FREQ_64KHZ: TimerControl = 2;
-pub const TimerControl_TIMER_FREQ_16KHZ: TimerControl = 3;
-pub const TimerControl_TIMER_FREQ_CASCADE: TimerControl = 4;
-pub const TimerControl_TIMER_IRQ_ENABLE: TimerControl = 64;
-pub const TimerControl_TIMER_ENABLE: TimerControl = 128;
-pub type TimerControl = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum TimerControl {
+    TIMER_FREQ_16MHZ = 0,
+    TIMER_FREQ_262KHZ = 1,
+    TIMER_FREQ_64KHZ = 2,
+    TIMER_FREQ_16KHZ = 3,
+    TIMER_FREQ_CASCADE = 4,
+    TIMER_IRQ_ENABLE = 64,
+    TIMER_ENABLE = 128,
+}
 extern "C" {
     pub fn timerSet(num: u32, reload: u16, flags: u16);
 }
@@ -632,68 +704,108 @@ extern "C" {
 extern "C" {
     pub fn timerGetValue(num: u32) -> u16;
 }
-pub const LCDDimensions_LCD_WIDTH: LCDDimensions = 240;
-pub const LCDDimensions_LCD_HEIGHT: LCDDimensions = 160;
-pub const LCDDimensions_LCD_SCANLINES: LCDDimensions = 228;
-pub type LCDDimensions = ::core::ffi::c_uint;
-pub const DisplayControl_VIDEO_MODE_REGULAR: DisplayControl = 0;
-pub const DisplayControl_VIDEO_MODE_MIXED: DisplayControl = 1;
-pub const DisplayControl_VIDEO_MODE_AFFINE: DisplayControl = 2;
-pub const DisplayControl_VIDEO_MODE_BITMAP: DisplayControl = 3;
-pub const DisplayControl_VIDEO_MODE_BITMAP_INDEXED: DisplayControl = 4;
-pub const DisplayControl_VIDEO_MODE_BITMAP_SMALL: DisplayControl = 5;
-pub const DisplayControl_VIDEO_FRAME_SELECT: DisplayControl = 16;
-pub const DisplayControl_VIDEO_OBJ_LAYOUT_1D: DisplayControl = 64;
-pub const DisplayControl_VIDEO_OBJ_LAYOUT_2D: DisplayControl = 0;
-pub const DisplayControl_VIDEO_FORCE_BLANK: DisplayControl = 128;
-pub const DisplayControl_VIDEO_BG0_ENABLE: DisplayControl = 256;
-pub const DisplayControl_VIDEO_BG1_ENABLE: DisplayControl = 512;
-pub const DisplayControl_VIDEO_BG2_ENABLE: DisplayControl = 1024;
-pub const DisplayControl_VIDEO_BG3_ENABLE: DisplayControl = 2048;
-pub const DisplayControl_VIDEO_OBJ_ENABLE: DisplayControl = 4096;
-pub const DisplayControl_VIDEO_WIN0_ENABLE: DisplayControl = 8192;
-pub const DisplayControl_VIDEO_WIN1_ENABLE: DisplayControl = 16384;
-pub const DisplayControl_VIDEO_OBJ_WIN_ENABLE: DisplayControl = 32768;
-pub type DisplayControl = ::core::ffi::c_uint;
-pub const DisplayStatus_LCD_IN_VBLANK: DisplayStatus = 1;
-pub const DisplayStatus_LCD_IN_HBLANK: DisplayStatus = 2;
-pub const DisplayStatus_LCD_VCOUNT_MATCH: DisplayStatus = 4;
-pub const DisplayStatus_LCD_VBLANK_IRQ_ENABLE: DisplayStatus = 8;
-pub const DisplayStatus_LCD_HBLANK_IRQ_ENABLE: DisplayStatus = 16;
-pub const DisplayStatus_LCD_VCOUNT_IRQ_ENABLE: DisplayStatus = 32;
-pub type DisplayStatus = ::core::ffi::c_uint;
-pub const VerticalCount_VCOUNT_DRAW_START: VerticalCount = 0;
-pub const VerticalCount_VCOUNT_DRAW_END: VerticalCount = 160;
-pub const VerticalCount_VCOUNT_BLANK_START: VerticalCount = 160;
-pub const VerticalCount_VCOUNT_BLANK_END: VerticalCount = 0;
-pub type VerticalCount = ::core::ffi::c_uint;
-pub const BackgroundControl_BG_PRIORITY_MIN: BackgroundControl = 3;
-pub const BackgroundControl_BG_PRIORITY_MAX: BackgroundControl = 0;
-pub const BackgroundControl_BG_MOSAIC_ENABLE: BackgroundControl = 64;
-pub const BackgroundControl_BG_TILE_8BPP: BackgroundControl = 128;
-pub const BackgroundControl_BG_TILE_4BPP: BackgroundControl = 0;
-pub const BackgroundControl_BG_AFFINE_WRAP: BackgroundControl = 8192;
-pub const BackgroundControl_BG_SIZE_256X256: BackgroundControl = 0;
-pub const BackgroundControl_BG_SIZE_512X256: BackgroundControl = 16384;
-pub const BackgroundControl_BG_SIZE_256X512: BackgroundControl = 32768;
-pub const BackgroundControl_BG_SIZE_512X512: BackgroundControl = 49152;
-pub const BackgroundControl_BG_AFFINE_SIZE_128X128: BackgroundControl = 0;
-pub const BackgroundControl_BG_AFFINE_SIZE_256X256: BackgroundControl = 16384;
-pub const BackgroundControl_BG_AFFINE_SIZE_512X512: BackgroundControl = 32768;
-pub const BackgroundControl_BG_AFFINE_SIZE_1024X1024: BackgroundControl = 49152;
-pub type BackgroundControl = ::core::ffi::c_uint;
-pub const Waitstate_WAIT_SRAM_4: Waitstate = 0;
-pub const Waitstate_WAIT_SRAM_3: Waitstate = 1;
-pub const Waitstate_WAIT_SRAM_2: Waitstate = 2;
-pub const Waitstate_WAIT_SRAM_8: Waitstate = 3;
-pub const Waitstate_WAIT_ROM_N_4: Waitstate = 0;
-pub const Waitstate_WAIT_ROM_N_3: Waitstate = 4;
-pub const Waitstate_WAIT_ROM_N_2: Waitstate = 8;
-pub const Waitstate_WAIT_ROM_N_8: Waitstate = 12;
-pub const Waitstate_WAIT_ROM_S_2: Waitstate = 0;
-pub const Waitstate_WAIT_ROM_S_1: Waitstate = 16;
-pub const Waitstate_WAIT_PREFETCH_ENABLE: Waitstate = 16384;
-pub type Waitstate = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum LCDDimensions {
+    LCD_WIDTH = 240,
+    LCD_HEIGHT = 160,
+    LCD_SCANLINES = 228,
+}
+impl DisplayControl {
+    pub const VIDEO_OBJ_LAYOUT_2D: DisplayControl = DisplayControl::VIDEO_MODE_REGULAR;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum DisplayControl {
+    VIDEO_MODE_REGULAR = 0,
+    VIDEO_MODE_MIXED = 1,
+    VIDEO_MODE_AFFINE = 2,
+    VIDEO_MODE_BITMAP = 3,
+    VIDEO_MODE_BITMAP_INDEXED = 4,
+    VIDEO_MODE_BITMAP_SMALL = 5,
+    VIDEO_FRAME_SELECT = 16,
+    VIDEO_OBJ_LAYOUT_1D = 64,
+    VIDEO_FORCE_BLANK = 128,
+    VIDEO_BG0_ENABLE = 256,
+    VIDEO_BG1_ENABLE = 512,
+    VIDEO_BG2_ENABLE = 1024,
+    VIDEO_BG3_ENABLE = 2048,
+    VIDEO_OBJ_ENABLE = 4096,
+    VIDEO_WIN0_ENABLE = 8192,
+    VIDEO_WIN1_ENABLE = 16384,
+    VIDEO_OBJ_WIN_ENABLE = 32768,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum DisplayStatus {
+    LCD_IN_VBLANK = 1,
+    LCD_IN_HBLANK = 2,
+    LCD_VCOUNT_MATCH = 4,
+    LCD_VBLANK_IRQ_ENABLE = 8,
+    LCD_HBLANK_IRQ_ENABLE = 16,
+    LCD_VCOUNT_IRQ_ENABLE = 32,
+}
+impl VerticalCount {
+    pub const VCOUNT_BLANK_START: VerticalCount = VerticalCount::VCOUNT_DRAW_END;
+}
+impl VerticalCount {
+    pub const VCOUNT_BLANK_END: VerticalCount = VerticalCount::VCOUNT_DRAW_START;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum VerticalCount {
+    VCOUNT_DRAW_START = 0,
+    VCOUNT_DRAW_END = 160,
+}
+impl BackgroundControl {
+    pub const BG_TILE_4BPP: BackgroundControl = BackgroundControl::BG_PRIORITY_MAX;
+}
+impl BackgroundControl {
+    pub const BG_SIZE_256X256: BackgroundControl = BackgroundControl::BG_PRIORITY_MAX;
+}
+impl BackgroundControl {
+    pub const BG_AFFINE_SIZE_128X128: BackgroundControl = BackgroundControl::BG_PRIORITY_MAX;
+}
+impl BackgroundControl {
+    pub const BG_AFFINE_SIZE_256X256: BackgroundControl = BackgroundControl::BG_SIZE_512X256;
+}
+impl BackgroundControl {
+    pub const BG_AFFINE_SIZE_512X512: BackgroundControl = BackgroundControl::BG_SIZE_256X512;
+}
+impl BackgroundControl {
+    pub const BG_AFFINE_SIZE_1024X1024: BackgroundControl = BackgroundControl::BG_SIZE_512X512;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum BackgroundControl {
+    BG_PRIORITY_MIN = 3,
+    BG_PRIORITY_MAX = 0,
+    BG_MOSAIC_ENABLE = 64,
+    BG_TILE_8BPP = 128,
+    BG_AFFINE_WRAP = 8192,
+    BG_SIZE_512X256 = 16384,
+    BG_SIZE_256X512 = 32768,
+    BG_SIZE_512X512 = 49152,
+}
+impl Waitstate {
+    pub const WAIT_ROM_N_4: Waitstate = Waitstate::WAIT_SRAM_4;
+}
+impl Waitstate {
+    pub const WAIT_ROM_S_2: Waitstate = Waitstate::WAIT_SRAM_4;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum Waitstate {
+    WAIT_SRAM_4 = 0,
+    WAIT_SRAM_3 = 1,
+    WAIT_SRAM_2 = 2,
+    WAIT_SRAM_8 = 3,
+    WAIT_ROM_N_3 = 4,
+    WAIT_ROM_N_2 = 8,
+    WAIT_ROM_N_8 = 12,
+    WAIT_ROM_S_1 = 16,
+    WAIT_PREFETCH_ENABLE = 16384,
+}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct BgAffineSrcData {
@@ -1004,9 +1116,12 @@ fn bindgen_test_layout_ObjAffineDstData() {
         )
     );
 }
-pub const ObjAffineSetOffset_OAS_OFFSET_DSTDATA: ObjAffineSetOffset = 2;
-pub const ObjAffineSetOffset_OAS_OFFSET_OAM: ObjAffineSetOffset = 8;
-pub type ObjAffineSetOffset = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum ObjAffineSetOffset {
+    OAS_OFFSET_DSTDATA = 2,
+    OAS_OFFSET_OAM = 8,
+}
 extern "C" {
     pub fn biosObjAffineSet(
         src: *const ObjAffineSrcData,
@@ -1184,12 +1299,18 @@ extern "C" {
 extern "C" {
     pub fn biosArcTan2(x: i16, y: i16) -> u16;
 }
-pub const CpuSetFlags_CS_SRC_FIXED: CpuSetFlags = 16777216;
-pub const CpuSetFlags_CS_32BIT: CpuSetFlags = 67108864;
-pub const CpuSetFlags_CS_16BIT: CpuSetFlags = 0;
-pub type CpuSetFlags = ::core::ffi::c_uint;
-pub const CpuFastSetFlags_CFS_SRC_FIXED: CpuFastSetFlags = 16777216;
-pub type CpuFastSetFlags = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum CpuSetFlags {
+    CS_SRC_FIXED = 16777216,
+    CS_32BIT = 67108864,
+    CS_16BIT = 0,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum CpuFastSetFlags {
+    CFS_SRC_FIXED = 16777216,
+}
 extern "C" {
     pub fn biosCpuSet(src: *const ::core::ffi::c_void, dst: *mut ::core::ffi::c_void, ctrl: u32);
 }
@@ -1206,22 +1327,28 @@ extern "C" {
 extern "C" {
     pub fn biosHardReset() -> !;
 }
-pub const SoftResetExFlags_SRE_FROM_ROM: SoftResetExFlags = 0;
-pub const SoftResetExFlags_SRE_FROM_RAM: SoftResetExFlags = 1;
-pub type SoftResetExFlags = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SoftResetExFlags {
+    SRE_FROM_ROM = 0,
+    SRE_FROM_RAM = 1,
+}
 extern "C" {
     pub fn biosSoftResetEx(reset_flags: u8, from_ewram: bool) -> !;
 }
-pub const RegisterRamResetFlags_RRR_EWRAM: RegisterRamResetFlags = 1;
-pub const RegisterRamResetFlags_RRR_IWRAM: RegisterRamResetFlags = 2;
-pub const RegisterRamResetFlags_RRR_PALETTE: RegisterRamResetFlags = 4;
-pub const RegisterRamResetFlags_RRR_VRAM: RegisterRamResetFlags = 8;
-pub const RegisterRamResetFlags_RRR_OAM: RegisterRamResetFlags = 16;
-pub const RegisterRamResetFlags_RRR_SIO: RegisterRamResetFlags = 32;
-pub const RegisterRamResetFlags_RRR_SOUND: RegisterRamResetFlags = 64;
-pub const RegisterRamResetFlags_RRR_REGISTERS: RegisterRamResetFlags = 128;
-pub const RegisterRamResetFlags_RRR_EVERYTHING: RegisterRamResetFlags = 255;
-pub type RegisterRamResetFlags = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum RegisterRamResetFlags {
+    RRR_EWRAM = 1,
+    RRR_IWRAM = 2,
+    RRR_PALETTE = 4,
+    RRR_VRAM = 8,
+    RRR_OAM = 16,
+    RRR_SIO = 32,
+    RRR_SOUND = 64,
+    RRR_REGISTERS = 128,
+    RRR_EVERYTHING = 255,
+}
 extern "C" {
     pub fn biosRegisterRamReset(reset_flags: u8);
 }
@@ -1240,9 +1367,12 @@ extern "C" {
 extern "C" {
     pub fn biosSoundDriverVSyncOn();
 }
-pub const BiosChecksum_BIOS_CHECKSUM_GBA: BiosChecksum = 3131971711;
-pub const BiosChecksum_BIOS_CHECKSUM_NDS: BiosChecksum = 3131971712;
-pub type BiosChecksum = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum BiosChecksum {
+    BIOS_CHECKSUM_GBA = 3131971711,
+    BIOS_CHECKSUM_NDS = 3131971712,
+}
 extern "C" {
     pub fn biosBiosChecksum() -> u32;
 }
@@ -1258,31 +1388,79 @@ extern "C" {
 extern "C" {
     pub fn biosVBlankIntrWait();
 }
-pub const SerialControlSPI_SPI_CLOCK_EXTERNAL: SerialControlSPI = 0;
-pub const SerialControlSPI_SPI_CLOCK_256KHZ: SerialControlSPI = 1;
-pub const SerialControlSPI_SPI_CLOCK_2MHZ: SerialControlSPI = 3;
-pub const SerialControlSPI_SPI_SI_STATE: SerialControlSPI = 4;
-pub const SerialControlSPI_SPI_SO_HIGH: SerialControlSPI = 8;
-pub const SerialControlSPI_SPI_SO_LOW: SerialControlSPI = 0;
-pub const SerialControlSPI_SPI_START: SerialControlSPI = 128;
-pub type SerialControlSPI = ::core::ffi::c_uint;
-pub const SerialControlUART_UART_BAUD_9600: SerialControlUART = 0;
-pub const SerialControlUART_UART_BAUD_38400: SerialControlUART = 1;
-pub const SerialControlUART_UART_BAUD_57600: SerialControlUART = 2;
-pub const SerialControlUART_UART_BAUD_115200: SerialControlUART = 3;
-pub const SerialControlUART_UART_CTS_ENABLE: SerialControlUART = 4;
-pub const SerialControlUART_UART_PARITY_ODD: SerialControlUART = 8;
-pub const SerialControlUART_UART_PARITY_EVEN: SerialControlUART = 0;
-pub const SerialControlUART_UART_SEND_FULL: SerialControlUART = 16;
-pub const SerialControlUART_UART_RECEIVE_EMPTY: SerialControlUART = 32;
-pub const SerialControlUART_UART_ERROR: SerialControlUART = 64;
-pub const SerialControlUART_UART_8BIT: SerialControlUART = 256;
-pub const SerialControlUART_UART_7BIT: SerialControlUART = 0;
-pub const SerialControlUART_UART_FIFO_ENABLE: SerialControlUART = 256;
-pub const SerialControlUART_UART_PARITY_ENABLE: SerialControlUART = 512;
-pub const SerialControlUART_UART_SEND_ENABLE: SerialControlUART = 1024;
-pub const SerialControlUART_UART_RECEIVE_ENABLE: SerialControlUART = 2048;
-pub type SerialControlUART = ::core::ffi::c_uint;
+impl SerialControlMultiplayer {
+    pub const MULTI_BUSY: SerialControlMultiplayer = SerialControlMultiplayer::MULTI_START;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SerialControlMultiplayer {
+    MULTI_BAUD_9600 = 0,
+    MULTI_BAUD_38400 = 1,
+    MULTI_BAUD_57600 = 2,
+    MULTI_BAUD_115200 = 3,
+    MULTI_CLIENT_FLAG = 4,
+    MULTI_READY_FLAG = 8,
+    MULTI_ERROR_FLAG = 64,
+    MULTI_START = 128,
+}
+impl RControlRaw {
+    pub const RAW_SD_DIR_IN: RControlRaw = RControlRaw::RAW_SC_DIR_IN;
+}
+impl RControlRaw {
+    pub const RAW_SI_DIR_IN: RControlRaw = RControlRaw::RAW_SC_DIR_IN;
+}
+impl RControlRaw {
+    pub const RAW_SO_DIR_IN: RControlRaw = RControlRaw::RAW_SC_DIR_IN;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum RControlRaw {
+    RAW_SC_DIR_OUT = 16,
+    RAW_SC_DIR_IN = 0,
+    RAW_SD_DIR_OUT = 32,
+    RAW_SI_DIR_OUT = 64,
+    RAW_SO_DIR_OUT = 128,
+    RAW_SI_IRQ_ENABLE = 256,
+}
+impl SerialControlSPI {
+    pub const SPI_SO_LOW: SerialControlSPI = SerialControlSPI::SPI_CLOCK_EXTERNAL;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SerialControlSPI {
+    SPI_CLOCK_EXTERNAL = 0,
+    SPI_CLOCK_256KHZ = 1,
+    SPI_CLOCK_2MHZ = 3,
+    SPI_SI_STATE = 4,
+    SPI_SO_HIGH = 8,
+    SPI_START = 128,
+}
+impl SerialControlUART {
+    pub const UART_PARITY_EVEN: SerialControlUART = SerialControlUART::UART_BAUD_9600;
+}
+impl SerialControlUART {
+    pub const UART_7BIT: SerialControlUART = SerialControlUART::UART_BAUD_9600;
+}
+impl SerialControlUART {
+    pub const UART_FIFO_ENABLE: SerialControlUART = SerialControlUART::UART_8BIT;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SerialControlUART {
+    UART_BAUD_9600 = 0,
+    UART_BAUD_38400 = 1,
+    UART_BAUD_57600 = 2,
+    UART_BAUD_115200 = 3,
+    UART_CTS_ENABLE = 4,
+    UART_PARITY_ODD = 8,
+    UART_SEND_FULL = 16,
+    UART_RECEIVE_EMPTY = 32,
+    UART_ERROR = 64,
+    UART_8BIT = 256,
+    UART_PARITY_ENABLE = 512,
+    UART_SEND_ENABLE = 1024,
+    UART_RECEIVE_ENABLE = 2048,
+}
 pub type Color = u16;
 pub type Palette = [Color; 256usize];
 pub type PaletteBank = [Color; 16usize];
@@ -1419,74 +1597,87 @@ fn bindgen_test_layout_Object() {
 pub type Mode3Frame = [[u16; 240usize]; 160usize];
 pub type Mode4Frame = [[u16; 120usize]; 160usize];
 pub type Mode5Frame = [[u16; 160usize]; 128usize];
-pub const Tile_TILE_FLIP_H: Tile = 1024;
-pub const Tile_TILE_FLIP_V: Tile = 2048;
-pub type Tile = ::core::ffi::c_uint;
-pub const BlendControl_BLEND_TARGET_BG0: BlendControl = 1;
-pub const BlendControl_BLEND_TARGET_BG1: BlendControl = 2;
-pub const BlendControl_BLEND_TARGET_BG2: BlendControl = 4;
-pub const BlendControl_BLEND_TARGET_BG3: BlendControl = 8;
-pub const BlendControl_BLEND_TARGET_OBJ: BlendControl = 16;
-pub const BlendControl_BLEND_TARGET_BD: BlendControl = 32;
-pub const BlendControl_BLEND_MODE_NONE: BlendControl = 0;
-pub const BlendControl_BLEND_MODE_ALPHA: BlendControl = 64;
-pub const BlendControl_BLEND_MODE_WHITE: BlendControl = 128;
-pub const BlendControl_BLEND_MODE_BLACK: BlendControl = 192;
-pub const BlendControl_BLEND_TARGET2_BG0: BlendControl = 256;
-pub const BlendControl_BLEND_TARGET2_BG1: BlendControl = 512;
-pub const BlendControl_BLEND_TARGET2_BG2: BlendControl = 1024;
-pub const BlendControl_BLEND_TARGET2_BG3: BlendControl = 2048;
-pub const BlendControl_BLEND_TARGET2_OBJ: BlendControl = 4096;
-pub const BlendControl_BLEND_TARGET2_BD: BlendControl = 8192;
-pub type BlendControl = ::core::ffi::c_uint;
-pub const ColorConstants_COLOR_RED: ColorConstants = 31;
-pub const ColorConstants_COLOR_RED_ORANGE: ColorConstants = 287;
-pub const ColorConstants_COLOR_ORANGE: ColorConstants = 511;
-pub const ColorConstants_COLOR_ORANGE_YELLOW: ColorConstants = 767;
-pub const ColorConstants_COLOR_YELLOW: ColorConstants = 1023;
-pub const ColorConstants_COLOR_YELLOW_LIME: ColorConstants = 1015;
-pub const ColorConstants_COLOR_LIME: ColorConstants = 1007;
-pub const ColorConstants_COLOR_LIME_GREEN: ColorConstants = 1000;
-pub const ColorConstants_COLOR_GREEN: ColorConstants = 992;
-pub const ColorConstants_COLOR_GREEN_MINT: ColorConstants = 9184;
-pub const ColorConstants_COLOR_MINT: ColorConstants = 16352;
-pub const ColorConstants_COLOR_MINT_CYAN: ColorConstants = 24544;
-pub const ColorConstants_COLOR_CYAN: ColorConstants = 32736;
-pub const ColorConstants_COLOR_CYAN_SKYBLUE: ColorConstants = 32480;
-pub const ColorConstants_COLOR_SKYBLUE: ColorConstants = 32224;
-pub const ColorConstants_COLOR_SKYBLUE_BLUE: ColorConstants = 32000;
-pub const ColorConstants_COLOR_BLUE: ColorConstants = 31744;
-pub const ColorConstants_COLOR_BLUE_PURPLE: ColorConstants = 31752;
-pub const ColorConstants_COLOR_PURPLE: ColorConstants = 31759;
-pub const ColorConstants_COLOR_PURPLE_MAGENTA: ColorConstants = 31767;
-pub const ColorConstants_COLOR_MAGENTA: ColorConstants = 31775;
-pub const ColorConstants_COLOR_MAGENTA_PINK: ColorConstants = 23583;
-pub const ColorConstants_COLOR_PINK: ColorConstants = 15391;
-pub const ColorConstants_COLOR_PINK_RED: ColorConstants = 8223;
-pub const ColorConstants_COLOR_BLACK: ColorConstants = 0;
-pub const ColorConstants_COLOR_WHITE: ColorConstants = 32767;
-pub const ColorConstants_COLOR_GRAY_0: ColorConstants = 0;
-pub const ColorConstants_COLOR_GRAY_5: ColorConstants = 2114;
-pub const ColorConstants_COLOR_GRAY_10: ColorConstants = 3171;
-pub const ColorConstants_COLOR_GRAY_15: ColorConstants = 5285;
-pub const ColorConstants_COLOR_GRAY_20: ColorConstants = 6342;
-pub const ColorConstants_COLOR_GRAY_25: ColorConstants = 8456;
-pub const ColorConstants_COLOR_GRAY_30: ColorConstants = 9513;
-pub const ColorConstants_COLOR_GRAY_35: ColorConstants = 11627;
-pub const ColorConstants_COLOR_GRAY_40: ColorConstants = 12684;
-pub const ColorConstants_COLOR_GRAY_45: ColorConstants = 14798;
-pub const ColorConstants_COLOR_GRAY_50: ColorConstants = 15855;
-pub const ColorConstants_COLOR_GRAY_55: ColorConstants = 17969;
-pub const ColorConstants_COLOR_GRAY_60: ColorConstants = 20083;
-pub const ColorConstants_COLOR_GRAY_65: ColorConstants = 21140;
-pub const ColorConstants_COLOR_GRAY_70: ColorConstants = 23254;
-pub const ColorConstants_COLOR_GRAY_75: ColorConstants = 24311;
-pub const ColorConstants_COLOR_GRAY_80: ColorConstants = 26425;
-pub const ColorConstants_COLOR_GRAY_85: ColorConstants = 27482;
-pub const ColorConstants_COLOR_GRAY_90: ColorConstants = 29596;
-pub const ColorConstants_COLOR_GRAY_95: ColorConstants = 30653;
-pub const ColorConstants_COLOR_GRAY_100: ColorConstants = 32767;
-pub type ColorConstants = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum Tile {
+    TILE_FLIP_H = 1024,
+    TILE_FLIP_V = 2048,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum BlendControl {
+    BLEND_TARGET_BG0 = 1,
+    BLEND_TARGET_BG1 = 2,
+    BLEND_TARGET_BG2 = 4,
+    BLEND_TARGET_BG3 = 8,
+    BLEND_TARGET_OBJ = 16,
+    BLEND_TARGET_BD = 32,
+    BLEND_MODE_NONE = 0,
+    BLEND_MODE_ALPHA = 64,
+    BLEND_MODE_WHITE = 128,
+    BLEND_MODE_BLACK = 192,
+    BLEND_TARGET2_BG0 = 256,
+    BLEND_TARGET2_BG1 = 512,
+    BLEND_TARGET2_BG2 = 1024,
+    BLEND_TARGET2_BG3 = 2048,
+    BLEND_TARGET2_OBJ = 4096,
+    BLEND_TARGET2_BD = 8192,
+}
+impl ColorConstants {
+    pub const COLOR_GRAY_0: ColorConstants = ColorConstants::COLOR_BLACK;
+}
+impl ColorConstants {
+    pub const COLOR_GRAY_100: ColorConstants = ColorConstants::COLOR_WHITE;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum ColorConstants {
+    COLOR_RED = 31,
+    COLOR_RED_ORANGE = 287,
+    COLOR_ORANGE = 511,
+    COLOR_ORANGE_YELLOW = 767,
+    COLOR_YELLOW = 1023,
+    COLOR_YELLOW_LIME = 1015,
+    COLOR_LIME = 1007,
+    COLOR_LIME_GREEN = 1000,
+    COLOR_GREEN = 992,
+    COLOR_GREEN_MINT = 9184,
+    COLOR_MINT = 16352,
+    COLOR_MINT_CYAN = 24544,
+    COLOR_CYAN = 32736,
+    COLOR_CYAN_SKYBLUE = 32480,
+    COLOR_SKYBLUE = 32224,
+    COLOR_SKYBLUE_BLUE = 32000,
+    COLOR_BLUE = 31744,
+    COLOR_BLUE_PURPLE = 31752,
+    COLOR_PURPLE = 31759,
+    COLOR_PURPLE_MAGENTA = 31767,
+    COLOR_MAGENTA = 31775,
+    COLOR_MAGENTA_PINK = 23583,
+    COLOR_PINK = 15391,
+    COLOR_PINK_RED = 8223,
+    COLOR_BLACK = 0,
+    COLOR_WHITE = 32767,
+    COLOR_GRAY_5 = 2114,
+    COLOR_GRAY_10 = 3171,
+    COLOR_GRAY_15 = 5285,
+    COLOR_GRAY_20 = 6342,
+    COLOR_GRAY_25 = 8456,
+    COLOR_GRAY_30 = 9513,
+    COLOR_GRAY_35 = 11627,
+    COLOR_GRAY_40 = 12684,
+    COLOR_GRAY_45 = 14798,
+    COLOR_GRAY_50 = 15855,
+    COLOR_GRAY_55 = 17969,
+    COLOR_GRAY_60 = 20083,
+    COLOR_GRAY_65 = 21140,
+    COLOR_GRAY_70 = 23254,
+    COLOR_GRAY_75 = 24311,
+    COLOR_GRAY_80 = 26425,
+    COLOR_GRAY_85 = 27482,
+    COLOR_GRAY_90 = 29596,
+    COLOR_GRAY_95 = 30653,
+}
 extern "C" {
     pub fn oamWriteObjects(oam_index: usize, objs: *mut Object, n_objs: usize) -> usize;
 }
@@ -1499,45 +1690,79 @@ extern "C" {
 extern "C" {
     pub fn oamWriteMatricesUnchecked(oam_index: usize, mats: *mut Matrix, n_mats: usize) -> usize;
 }
-pub const ObjectAttribute0_OBJ_MODE_REGULAR: ObjectAttribute0 = 0;
-pub const ObjectAttribute0_OBJ_MODE_AFFINE: ObjectAttribute0 = 256;
-pub const ObjectAttribute0_OBJ_MODE_HIDDEN: ObjectAttribute0 = 512;
-pub const ObjectAttribute0_OBJ_MODE_DOUBLE: ObjectAttribute0 = 768;
-pub const ObjectAttribute0_OBJ_TYPE_REGULAR: ObjectAttribute0 = 0;
-pub const ObjectAttribute0_OBJ_TYPE_BLEND: ObjectAttribute0 = 1024;
-pub const ObjectAttribute0_OBJ_TYPE_WINDOW: ObjectAttribute0 = 2048;
-pub const ObjectAttribute0_OBJ_MOSAIC_ENABLE: ObjectAttribute0 = 4096;
-pub const ObjectAttribute0_OBJ_TILE_8BPP: ObjectAttribute0 = 8192;
-pub const ObjectAttribute0_OBJ_TILE_4BPP: ObjectAttribute0 = 0;
-pub const ObjectAttribute0_OBJ_SHAPE_SQUARE: ObjectAttribute0 = 0;
-pub const ObjectAttribute0_OBJ_SHAPE_WIDE: ObjectAttribute0 = 16384;
-pub const ObjectAttribute0_OBJ_SHAPE_TALL: ObjectAttribute0 = 32768;
-pub type ObjectAttribute0 = ::core::ffi::c_uint;
-pub const ObjectAttribute1_OBJ_FLIP_H: ObjectAttribute1 = 4096;
-pub const ObjectAttribute1_OBJ_FLIP_V: ObjectAttribute1 = 8192;
-pub const ObjectAttribute1_OBJ_SIZE_8X8: ObjectAttribute1 = 0;
-pub const ObjectAttribute1_OBJ_SIZE_16X16: ObjectAttribute1 = 16384;
-pub const ObjectAttribute1_OBJ_SIZE_32X32: ObjectAttribute1 = 32768;
-pub const ObjectAttribute1_OBJ_SIZE_64X64: ObjectAttribute1 = 49152;
-pub const ObjectAttribute1_OBJ_SIZE_16X8: ObjectAttribute1 = 0;
-pub const ObjectAttribute1_OBJ_SIZE_32X8: ObjectAttribute1 = 16384;
-pub const ObjectAttribute1_OBJ_SIZE_32X16: ObjectAttribute1 = 32768;
-pub const ObjectAttribute1_OBJ_SIZE_64X32: ObjectAttribute1 = 49152;
-pub const ObjectAttribute1_OBJ_SIZE_8X16: ObjectAttribute1 = 0;
-pub const ObjectAttribute1_OBJ_SIZE_8X32: ObjectAttribute1 = 16384;
-pub const ObjectAttribute1_OBJ_SIZE_16X32: ObjectAttribute1 = 32768;
-pub const ObjectAttribute1_OBJ_SIZE_32X64: ObjectAttribute1 = 49152;
-pub type ObjectAttribute1 = ::core::ffi::c_uint;
-pub const ObjectAttribute2_OBJ_PRIORITY_MIN: ObjectAttribute2 = 3072;
-pub const ObjectAttribute2_OBJ_PROIRITY_MAX: ObjectAttribute2 = 0;
-pub type ObjectAttribute2 = ::core::ffi::c_uint;
-pub const WindowControl_WINDOW_BG0_ENABLE: WindowControl = 1;
-pub const WindowControl_WINDOW_BG1_ENABLE: WindowControl = 2;
-pub const WindowControl_WINDOW_BG2_ENABLE: WindowControl = 4;
-pub const WindowControl_WINDOW_BG3_ENABLE: WindowControl = 8;
-pub const WindowControl_WINDOW_OBJ_ENABLE: WindowControl = 16;
-pub const WindowControl_WINDOW_BLEND_ENABLE: WindowControl = 32;
-pub type WindowControl = ::core::ffi::c_uint;
+impl ObjectAttribute0 {
+    pub const OBJ_TYPE_REGULAR: ObjectAttribute0 = ObjectAttribute0::OBJ_MODE_REGULAR;
+}
+impl ObjectAttribute0 {
+    pub const OBJ_TILE_4BPP: ObjectAttribute0 = ObjectAttribute0::OBJ_MODE_REGULAR;
+}
+impl ObjectAttribute0 {
+    pub const OBJ_SHAPE_SQUARE: ObjectAttribute0 = ObjectAttribute0::OBJ_MODE_REGULAR;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum ObjectAttribute0 {
+    OBJ_MODE_REGULAR = 0,
+    OBJ_MODE_AFFINE = 256,
+    OBJ_MODE_HIDDEN = 512,
+    OBJ_MODE_DOUBLE = 768,
+    OBJ_TYPE_BLEND = 1024,
+    OBJ_TYPE_WINDOW = 2048,
+    OBJ_MOSAIC_ENABLE = 4096,
+    OBJ_TILE_8BPP = 8192,
+    OBJ_SHAPE_WIDE = 16384,
+    OBJ_SHAPE_TALL = 32768,
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_16X8: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_8X8;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_32X8: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_16X16;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_32X16: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_32X32;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_64X32: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_64X64;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_8X16: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_8X8;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_8X32: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_16X16;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_16X32: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_32X32;
+}
+impl ObjectAttribute1 {
+    pub const OBJ_SIZE_32X64: ObjectAttribute1 = ObjectAttribute1::OBJ_SIZE_64X64;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum ObjectAttribute1 {
+    OBJ_FLIP_H = 4096,
+    OBJ_FLIP_V = 8192,
+    OBJ_SIZE_8X8 = 0,
+    OBJ_SIZE_16X16 = 16384,
+    OBJ_SIZE_32X32 = 32768,
+    OBJ_SIZE_64X64 = 49152,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum ObjectAttribute2 {
+    OBJ_PRIORITY_MIN = 3072,
+    OBJ_PROIRITY_MAX = 0,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum WindowControl {
+    WINDOW_BG0_ENABLE = 1,
+    WINDOW_BG1_ENABLE = 2,
+    WINDOW_BG2_ENABLE = 4,
+    WINDOW_BG3_ENABLE = 8,
+    WINDOW_OBJ_ENABLE = 16,
+    WINDOW_BLEND_ENABLE = 32,
+}
 pub type AssertHandlerFn = ::core::option::Option<
     unsafe extern "C" fn(
         arg1: *const ::core::ffi::c_char,
@@ -1578,29 +1803,38 @@ extern "C" {
 extern "C" {
     pub fn bitCLZ8(value: u8) -> u32;
 }
-pub const DebugException_EXCEPTION_UNDEFINED_INSTRUCTION: DebugException = 0;
-pub const DebugException_EXCEPTION_PREFETCH_ABORT: DebugException = 1;
-pub const DebugException_EXCEPTION_DATA_ABORT: DebugException = 2;
-pub const DebugException_EXCEPTION_IRQ: DebugException = 3;
-pub const DebugException_EXCEPTION_FIQ: DebugException = 4;
-pub type DebugException = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum DebugException {
+    EXCEPTION_UNDEFINED_INSTRUCTION = 0,
+    EXCEPTION_PREFETCH_ABORT = 1,
+    EXCEPTION_DATA_ABORT = 2,
+    EXCEPTION_IRQ = 3,
+    EXCEPTION_FIQ = 4,
+}
 extern "C" {
     pub fn dbgRaiseException(exception: u32) -> bool;
 }
-pub const LogLevel_LOG_OFF: LogLevel = 0;
-pub const LogLevel_LOG_FATAL: LogLevel = 1;
-pub const LogLevel_LOG_ERROR: LogLevel = 2;
-pub const LogLevel_LOG_WARN: LogLevel = 3;
-pub const LogLevel_LOG_INFO: LogLevel = 4;
-pub const LogLevel_LOG_DEBUG: LogLevel = 5;
-pub const LogLevel_LOG_TRACE: LogLevel = 6;
-pub type LogLevel = ::core::ffi::c_uint;
-pub const LogInterface_LOGIF_NONE: LogInterface = 0;
-pub const LogInterface_LOGIF_MGBA: LogInterface = 1;
-pub const LogInterface_LOGIF_NOCASH: LogInterface = 2;
-pub const LogInterface_LOGIF_VBA: LogInterface = 3;
-pub const LogInterface_LOGIF_CUSTOM: LogInterface = 255;
-pub type LogInterface = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum LogLevel {
+    LOG_OFF = 0,
+    LOG_FATAL = 1,
+    LOG_ERROR = 2,
+    LOG_WARN = 3,
+    LOG_INFO = 4,
+    LOG_DEBUG = 5,
+    LOG_TRACE = 6,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum LogInterface {
+    LOGIF_NONE = 0,
+    LOGIF_MGBA = 1,
+    LOGIF_NOCASH = 2,
+    LOGIF_VBA = 3,
+    LOGIF_CUSTOM = 255,
+}
 pub type LogCustomOutputFunction =
     ::core::option::Option<unsafe extern "C" fn(arg1: u8, arg2: *const ::core::ffi::c_char)>;
 extern "C" {
@@ -1639,10 +1873,13 @@ extern "C" {
 extern "C" {
     pub fn randNext() -> u32;
 }
-pub const SIMDMask_SIMD_MASK_4X8: SIMDMask = 2155905152;
-pub const SIMDMask_SIMD_MASK_2X16: SIMDMask = 2147516416;
-pub const SIMDMask_SIMD_MASK_2XRGB: SIMDMask = 3255878160;
-pub type SIMDMask = ::core::ffi::c_uint;
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+pub enum SIMDMask {
+    SIMD_MASK_4X8 = 2155905152,
+    SIMD_MASK_2X16 = 2147516416,
+    SIMD_MASK_2XRGB = 3255878160,
+}
 extern "C" {
     pub fn simdAdd(
         mask: u32,

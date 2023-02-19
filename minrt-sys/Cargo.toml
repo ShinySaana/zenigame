@@ -1,7 +1,6 @@
 [package]
-authors = ["ShinySaana <shinysaana@gmail.com"]
-name = "seven-sys"
-version = "0.17.2"
+name = "minrt-sys"
+version = "0.7.3"
 edition = "2021"
 
 [dependencies]

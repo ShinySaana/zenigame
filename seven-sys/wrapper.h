@@ -27,10 +27,8 @@
 #include <seven/hw/bios/wait.h>
 
 #include <seven/hw/serial/joybus.h>
-// TODO(fix)
-// #include <seven/hw/serial/multiplayer.h>
-// TODO(fix)
-// #include <seven/hw/serial/raw.h>
+#include <seven/hw/serial/multiplayer.h>
+#include <seven/hw/serial/raw.h>
 #include <seven/hw/serial/spi.h>
 #include <seven/hw/serial/uart.h>
 
@@ -61,4 +59,3 @@
 #include <seven/util/random.h>
 #include <seven/util/simd.h>
 // #include <seven/util/string.h>
-

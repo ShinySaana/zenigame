@@ -7,7 +7,7 @@ fn main() {
     let sdk_seven_dir = root_dir.join(PathBuf::from("vendor/sdk-seven"));
     let build_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     let build_path = build_path.join("build");
-    let libseven_build_dir = build_path.to_str().unwrap();
+    let minrt_build_dir = build_path.to_str().unwrap();
 
 
     let setup_output = std::process::Command::new("meson")
@@ -16,11 +16,11 @@ fn main() {
         "--cross-file=cross/arm-none-eabi.txt",
         "--cross-file=cross/arm7tdmi.txt",
         "-Dminrt_lang=rust",
-        libseven_build_dir
+        minrt_build_dir
       ])
       .current_dir(sdk_seven_dir.to_str().unwrap())
       .output()
-      .expect("libseven: failed to setup");
+      .expect("mintrt: failed to setup");
 
     if !setup_output.status.success() {
       panic!("{}\n{}", String::from_utf8_lossy(&setup_output.stdout), String::from_utf8_lossy(&setup_output.stderr));
@@ -37,26 +37,26 @@ fn main() {
       panic!("{}", String::from_utf8_lossy(&build_output.stderr));
     }
 
-    println!("cargo:rustc-link-search={}/{}", libseven_build_dir, "libseven");
-    println!("cargo:rustc-link-lib=static=seven");
+    println!("cargo:rustc-link-search={}/{}", minrt_build_dir, "minrt");
+    println!("cargo:rustc-link-lib=static=minrt_rom");
 
     bindgen(&sdk_seven_dir);
   }
 }
 
 fn bindgen(sdk_seven_dir: &PathBuf) {
-  let libseven_include_dir = sdk_seven_dir.join("libseven").join("include");
+  let minrt_include_dir = sdk_seven_dir.join("minrt").join("include");
 
   let wrapper_file_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("wrapper.h");
 
   let mut builder = bindgen::Builder::default()
     .header(wrapper_file_path.to_str().unwrap());
 
-  let headers_dir_canonical = canonicalize(libseven_include_dir).unwrap();
+  let headers_dir_canonical = canonicalize(minrt_include_dir).unwrap();
   let include_dir = headers_dir_canonical.to_str().unwrap();
+
   builder = builder.clang_arg(format!("-I{include_dir}"));
 
-  println!("cargo:rerun-if-changed={}/seven/base.h", include_dir);
   println!("cargo:rerun-if-changed=wrapper.h");
   builder = builder.parse_callbacks(Box::new(bindgen::CargoCallbacks));
 
@@ -68,11 +68,11 @@ fn bindgen(sdk_seven_dir: &PathBuf) {
     .use_core()
     .rustified_enum(".*")
     .generate()
-    .expect("Unable to generate libseven bindings");
+    .expect("Unable to generate minrt bindings");
 
   let src_dir = PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/src"));
 
   bindings
   .write_to_file(src_dir.join("bindgen_bindings.rs"))
-  .expect("Couldn't write libseven bindings!");
+  .expect("Couldn't write minrt bindings!");
 }

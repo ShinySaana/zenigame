@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "seven-sys",
+    "minrt-sys",
     "zenigame",
 ]

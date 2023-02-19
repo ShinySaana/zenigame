@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 seven-sys = { path = "../seven-sys" }
+minrt-sys = { path = "../minrt-sys" }
+

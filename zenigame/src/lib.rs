@@ -1,5 +1,8 @@
 #![no_std]
 
+extern crate minrt_sys;
+extern crate seven_sys;
+
 use core::panic::PanicInfo;
 
 #[panic_handler]
