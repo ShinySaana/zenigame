@@ -82,8 +82,6 @@ impl <T: Copy, const Size: usize> SevenMemArray <T, Size> {
         temp[idx] = val;
         self.write(temp);
     }
-
-
 }
 
 
@@ -287,19 +285,19 @@ macro_rules! memaddr {
 
 memaddr! {
     // seven/hw/irq.h
-    MEM_ISR,        0x03FFFFFC,     *mut crate::bindings::IsrFn
+    MEM_ISR,        0x03FFFFFC,             *mut crate::bindings::IsrFn
 
     // seven/hw/video/bg_bitmap.h
-    MODE3_FRAME,    MEM_VRAM_ADDR,  crate::bindings::Mode3Frame
+    MODE3_FRAME,    MEM_VRAM_ADDR,          crate::bindings::Mode3Frame
 
-    MODE4_FRAME_0,  MEM_VRAM_ADDR, crate::bindings::Mode4Frame
+    MODE4_FRAME_0,  MEM_VRAM_ADDR,          crate::bindings::Mode4Frame
     MODE4_FRAME_1,  MEM_VRAM_ADDR + 0xA000, crate::bindings::Mode4Frame
 
-    MODE5_FRAME_0,  MEM_VRAM_ADDR, crate::bindings::Mode5Frame
+    MODE5_FRAME_0,  MEM_VRAM_ADDR,          crate::bindings::Mode5Frame
     MODE5_FRAME_1,  MEM_VRAM_ADDR + 0xA000, crate::bindings::Mode5Frame
 
     // seven/hw/video/memory.h
-    BG_PALETTE,     MEM_PALETTE_ADRR, crate::bindings::Palette
+    BG_PALETTE,     MEM_PALETTE_ADRR,       crate::bindings::Palette
     OBJ_PALETTE,    MEM_PALETTE_ADRR + 512, crate::bindings::Palette
 }
 
@@ -313,9 +311,9 @@ macro_rules! memarray {
 
 memarray! {
     // seven/hw/video/memory.h
-    BG_PALETTE_BANK, MEM_PALETTE_ADRR, crate::bindings::PaletteBank, 16
-    OBJ_PALETTE_BANK, MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank, 16
+    BG_PALETTE_BANK,    MEM_PALETTE_ADRR,       crate::bindings::PaletteBank, 16
+    OBJ_PALETTE_BANK,   MEM_PALETTE_ADRR + 512, crate::bindings::PaletteBank, 16
 
-    OAM_OBJS,       MEM_OAM_ADDR, crate::bindings::Object, 128
+    OAM_OBJS,           MEM_OAM_ADDR,           crate::bindings::Object, 128
 }
 

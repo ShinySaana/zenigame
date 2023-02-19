@@ -4,10 +4,12 @@
 extern crate zenigame;
 
 extern "C" fn vblank_callback(_irqs: u16) {
-    let bg_palette_addr: usize = 0x0500_0000;
-    let bg_palette_ptr = bg_palette_addr as *mut u16;
+    use seven_sys::addresses::BG_PALETTE;
+
     unsafe {
-        *bg_palette_ptr = *bg_palette_ptr + 1;
+        let mut value = BG_PALETTE.read();
+        value[0] += 1;
+        BG_PALETTE.write(value)
     }
 }
 
@@ -20,17 +22,7 @@ fn main(_argc: isize, _argv: *const *const u8 ) -> isize {
 
         seven_sys::addresses::REG_DISPCNT.write(1);
 
-        seven_sys::bindings::logInit();
-        seven_sys::bindings::logSetMaxLevel(5);
-
-        seven_sys::addresses::REG_BGCNT.set(1, 32);
-        let value = seven_sys::addresses::REG_BGCNT.get(1);
-
-        let mut buffer = [0u8; 256];
-        buffer[0] = value as u8 + b'0';
-       
         loop {
-            seven_sys::bindings::logOutput(5, buffer.as_ptr().cast());
             seven_sys::bindings::biosVBlankIntrWait();
         }
     }
