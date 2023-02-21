@@ -13,6 +13,7 @@ fn vblank_callback(_irqs: u16) {
     }
 }
 
+
 #[start]
 fn main(_argc: isize, _argv: *const *const u8 ) -> isize {
     unsafe {
@@ -32,7 +33,6 @@ fn main(_argc: isize, _argv: *const *const u8 ) -> isize {
         seven_sys::bindings::logOutput(5, b"hello\0".as_ptr().cast());
 
         let mut i: u8 = 0;
-
         loop {
             if i > 30 {
                 panic!();

@@ -9,7 +9,8 @@ build-std = ["core"]
 rustflags = [
     "-C", "link-arg=-Tvendor/sdk-seven/minrt/lib/ldscripts/rom.mem",
     "-C", "link-arg=-Tvendor/sdk-seven/minrt/lib/ldscripts/gba.x",
-    "-C", "link-arg=-Map=zenigame.map",
+    "-C", "link-arg=-Map=zenigame.map"
 ]
+
 # runner = "mgba-qt"
 runner = "vendor/mgba-11.dev.appimage"

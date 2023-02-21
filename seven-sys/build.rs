@@ -16,6 +16,7 @@ fn main() {
         "--cross-file=cross/arm-none-eabi.txt",
         "--cross-file=cross/arm7tdmi.txt",
         "-Dminrt_lang=rust",
+        "-Dbuildtype=debugoptimized",
         libseven_build_dir
       ])
       .current_dir(sdk_seven_dir.to_str().unwrap())

@@ -1,8 +1,10 @@
 #![no_std]
+#![feature(const_trait_impl)]
 
 extern crate minrt_sys;
 extern crate seven_sys;
 
+pub mod sync;
 pub mod panic;
 pub mod irq;
 
