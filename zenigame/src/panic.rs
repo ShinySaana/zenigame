@@ -1,14 +1,14 @@
-use core::panic::PanicInfo;
+use core::{panic::PanicInfo, arch::asm};
 
 
-pub(crate) static mut PANICKED: bool = false;
+static mut PANICKED: u8 = 0;
 
 pub type PanicCallback = fn();
 static mut PANIC_CALLBACK: Option<PanicCallback> = None;
 
 pub fn has_panicked() -> bool {
-    return unsafe {
-        PANICKED
+    unsafe {
+        PANICKED == 1
     }
 }
 
@@ -18,14 +18,31 @@ pub fn set_panic_callback(cb: PanicCallback) {
     }
 }
 
+#[instruction_set(arm::a32)]
+#[inline]
+unsafe fn arm_exchange_u8(dst: *mut u8, i: u8) -> u8 {
+    let out;
+    asm!("swpb {2}, {1}, [{0}]", in(reg) dst, in(reg) i, lateout(reg) out);
+    out
+}
+
+
+#[instruction_set(arm::a32)]
+#[inline]
+unsafe fn arm_exchange_u32(dst: *mut u32, i: u32) -> u32 {
+    let out;
+    asm!("swp {2}, {1}, [{0}]", in(reg) dst, in(reg) i, lateout(reg) out);
+    out
+}
+
 #[panic_handler]
+#[instruction_set(arm::a32)]
 pub fn panic(_info: &PanicInfo) -> ! {
     unsafe {
-        if PANICKED {
+        let has_already_panicked = arm_exchange_u8(&mut PANICKED, 1); 
+        if has_already_panicked == 1 {
             double_panic();
         }
-
-        PANICKED = true;
     
         match PANIC_CALLBACK {
             Some(cb) => {
