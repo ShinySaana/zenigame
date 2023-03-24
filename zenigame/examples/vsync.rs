@@ -3,7 +3,26 @@
 
 use core::panic;
 
+use seven_sys::addresses::MEM_EWRAM;
+use zenigame::sync::SyncedPtr;
+use zenigame::sync::Swappable;
+use zenigame::irq::IrqHandlerFn;
+
 extern crate zenigame;
+
+static mut MESSAGE: Option<SyncedPtr<u8>> = None;
+static mut AA: *const u8 = b"AA\0".as_ptr();
+static mut BB: *const u8 = b"BB\0".as_ptr();
+
+fn print_message(_irqs: u16) {
+    unsafe {
+        let msg = MESSAGE.as_ref().unwrap().get();
+        seven_sys::bindings::logOutput(5, msg.cast());
+    }
+}
+
+
+
 
 fn vblank_callback(_irqs: u16) {
     use seven_sys::addresses::BG_PALETTE_COLOR;
@@ -14,13 +33,28 @@ fn vblank_callback(_irqs: u16) {
 }
 
 
+fn print_a(_irqs: u16) {
+    unsafe {
+        seven_sys::bindings::logOutput(5, b"AAAA\0".as_ptr().cast());
+    }
+}
+
+fn print_z(_irqs: u16) {
+    unsafe {
+        seven_sys::bindings::logOutput(5, b"ZZZZ\0".as_ptr().cast());
+    }
+}
+
+
 #[start]
 fn main(_argc: isize, _argv: *const *const u8 ) -> isize {
     unsafe {
+        MESSAGE = Some(SyncedPtr::new(AA.cast_mut()));
+
         seven_sys::bindings::irqInitDefault();
         seven_sys::bindings::irqEnableFull(seven_sys::bindings::IRQ::IRQ_VBLANK as u16);
         
-        zenigame::irq::set_vblank_callback(vblank_callback);
+        zenigame::irq::set_vblank_callback(print_message);
         zenigame::panic::set_panic_callback(|| {
             seven_sys::bindings::logOutput(5, b"panicked\0".as_ptr().cast());
             panic!();
@@ -34,6 +68,12 @@ fn main(_argc: isize, _argv: *const *const u8 ) -> isize {
 
         let mut i: u8 = 0;
         loop {
+            if i % 2 == 0 {
+                MESSAGE.as_mut().unwrap().swap(AA.cast_mut());
+            } else {
+                MESSAGE.as_mut().unwrap().swap(BB.cast_mut());
+            }
+
             if i > 30 {
                 panic!();
             }

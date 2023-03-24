@@ -1,6 +1,6 @@
 use core::arch::asm;
 
-pub(crate) trait Swappable<T> {
+pub trait Swappable<T> {
     unsafe fn get(&self) -> T;
     unsafe fn swap(&mut self, i: T) -> T;
 }
@@ -23,12 +23,21 @@ impl SyncedU32 {
     }
 }
 
+pub struct SyncedPtr<T> (*mut T);
+
+impl <T> SyncedPtr<T> {
+    pub const fn new(i: *mut T) -> Self {
+        Self(i)
+    }
+}
+
+
 impl Swappable<u8> for SyncedU8 {
 
     unsafe fn get(&self) -> u8 {
         self.0
     }
-
+ 
     #[instruction_set(arm::a32)]
     #[inline]
     unsafe fn swap(&mut self, i: u8) -> u8 {
@@ -55,3 +64,17 @@ impl Swappable<u32> for SyncedU32 {
 }
 
 
+impl <T> Swappable<*mut T> for SyncedPtr<T> {
+    unsafe fn get(&self) -> *mut T {
+        return self.0
+    }
+
+    #[instruction_set(arm::a32)]
+    #[inline]
+    unsafe fn swap(&mut self, i: *mut T) -> *mut T {
+        let out;
+        let dst = self;
+        asm!("swp {2}, {1}, [{0}]", in(reg) dst, in(reg) i, lateout(reg) out);
+        out 
+    }
+}
