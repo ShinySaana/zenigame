@@ -12,5 +12,7 @@ rustflags = [
     "-C", "link-arg=-Map=zenigame.map"
 ]
 
+linker = "arm-none-eabi-ld"
+
 # runner = "mgba-qt"
 runner = "vendor/mgba-11.dev.appimage"
