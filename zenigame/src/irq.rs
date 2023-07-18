@@ -20,7 +20,7 @@ extern "C" fn vblank(arg: u16) {
 pub fn set_vblank_callback(cb: IrqHandlerFn) {
     unsafe {
         VBLANK_CALLBACK = Some(cb);
-        seven_sys::bindings::irqHandlerSet(seven_sys::bindings::IRQ::IRQ_VBLANK as u16, Some(vblank));
+        seven_sys::bindings::irqHandlerSet(seven_sys::bindings::IRQFlag::IRQ_VBLANK as u16, Some(vblank));
     }
 
 }
@@ -28,7 +28,7 @@ pub fn set_vblank_callback(cb: IrqHandlerFn) {
 pub fn swap_vblank_callback(cb: IrqHandlerFn) -> Option<IrqHandlerFn> {
     unsafe {
         let old = VBLANK_CALLBACK.replace(cb);
-        seven_sys::bindings::irqHandlerSet(seven_sys::bindings::IRQ::IRQ_VBLANK as u16, Some(vblank));
+        seven_sys::bindings::irqHandlerSet(seven_sys::bindings::IRQFlag::IRQ_VBLANK as u16, Some(vblank));
         old
     }
 

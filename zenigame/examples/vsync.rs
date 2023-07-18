@@ -3,10 +3,8 @@
 
 use core::panic;
 
-use seven_sys::addresses::MEM_EWRAM;
 use zenigame::sync::SyncedPtr;
 use zenigame::sync::Swappable;
-use zenigame::irq::IrqHandlerFn;
 
 extern crate zenigame;
 
@@ -52,7 +50,7 @@ fn main(_argc: isize, _argv: *const *const u8 ) -> isize {
         MESSAGE = Some(SyncedPtr::new(AA.cast_mut()));
 
         seven_sys::bindings::irqInitDefault();
-        seven_sys::bindings::irqEnableFull(seven_sys::bindings::IRQ::IRQ_VBLANK as u16);
+        seven_sys::bindings::irqEnable(seven_sys::bindings::IRQFlag::IRQ_VBLANK as u16);
         
         zenigame::irq::set_vblank_callback(print_message);
         zenigame::panic::set_panic_callback(|| {

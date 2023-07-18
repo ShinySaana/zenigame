@@ -39,7 +39,9 @@ fn main() {
     }
 
     println!("cargo:rustc-link-search={}/{}", libseven_build_dir, "libseven");
+    println!("cargo:rustc-link-search={}/{}", libseven_build_dir, "libutil");
     println!("cargo:rustc-link-lib=static=seven");
+    println!("cargo:rustc-link-lib=static=util");
 
     bindgen(&sdk_seven_dir);
   }
