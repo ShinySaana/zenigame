@@ -1,61 +1,51 @@
 #include <seven/base.h>
 #include <seven/attributes.h>
-#include <seven/version.h>
 
-#include <seven/hw/bios.h>
-#include <seven/hw/cartridge.h>
-#include <seven/hw/cpu.h>
-#include <seven/hw/dma.h>
-#include <seven/hw/input.h>
-#include <seven/hw/irq.h>
-#include <seven/hw/memory.h>
-#include <seven/hw/serial.h>
-// #include <seven/hw/sound.h>
-#include <seven/hw/sram.h>
-#include <seven/hw/timer.h>
-#include <seven/hw/video.h>
-#include <seven/hw/waitstate.h>
+#include <seven/bios.h>
+#include <seven/cartridge.h>
+#include <seven/cpu.h>
+#include <seven/dma.h>
+#include <seven/input.h>
+#include <seven/irq.h>
+#include <seven/memory.h>
+#include <seven/serial.h>
+// #include <seven/sound.h>
+#include <seven/sram.h>
+#include <seven/timer.h>
+#include <seven/video.h>
+#include <seven/waitstate.h>
 
-#include <seven/hw/bios/affine.h>
-#include <seven/hw/bios/decompression.h>
-#include <seven/hw/bios/math.h>
-#include <seven/hw/bios/memory.h>
-#include <seven/hw/bios/reset.h>
-#include <seven/hw/bios/sound.h>
-#include <seven/hw/bios/system.h>
-#include <seven/hw/bios/system.h>
-#include <seven/hw/bios/wait.h>
 
-#include <seven/hw/serial/joybus.h>
-#include <seven/hw/serial/multiplayer.h>
-#include <seven/hw/serial/raw.h>
-#include <seven/hw/serial/spi.h>
-#include <seven/hw/serial/uart.h>
+#include <seven/serial/joybus.h>
+#include <seven/serial/multiplayer.h>
+#include <seven/serial/raw.h>
+#include <seven/serial/spi.h>
+#include <seven/serial/uart.h>
 
-#include <seven/hw/video/bg_bitmap.h>
-#include <seven/hw/video/bg_scroll.h>
-#include <seven/hw/video/bg_tiled.h>
-#include <seven/hw/video/bg_transform.h>
-#include <seven/hw/video/blend.h>
-#include <seven/hw/video/color_constants.h>
-#include <seven/hw/video/color.h>
-#include <seven/hw/video/matrix.h>
-#include <seven/hw/video/memory.h>
-#include <seven/hw/video/mosaic.h>
-#include <seven/hw/video/oam.h>
-#include <seven/hw/video/object.h>
-#include <seven/hw/video/palette.h>
-#include <seven/hw/video/types.h>
-#include <seven/hw/video/window.h>
+#include <seven/video/bg_bitmap.h>
+#include <seven/video/bg_scroll.h>
+#include <seven/video/bg_tiled.h>
+#include <seven/video/bg_transform.h>
+#include <seven/video/blend.h>
+#include <seven/video/color_constants.h>
+#include <seven/video/color.h>
+#include <seven/video/matrix.h>
+#include <seven/video/memory.h>
+#include <seven/video/mosaic.h>
+#include <seven/video/oam.h>
+#include <seven/video/object.h>
+#include <seven/video/palette.h>
+#include <seven/video/types.h>
+#include <seven/video/window.h>
 
-#include <seven/util/assert.h>
-#include <seven/util/bit.h>
-#include <seven/util/debug.h>
-#include <seven/util/log.h>
-// #include <seven/util/math.h>
-// #include <seven/util/memory.h>
-// #include <seven/util/overlay.h>
-#include <seven/util/profile.h>
-#include <seven/util/random.h>
-#include <seven/util/simd.h>
-// #include <seven/util/string.h>
+#include <util/assert.h>
+#include <util/bit.h>
+#include <util/debug.h>
+#include <util/log.h>
+// #include <util/math.h>
+// #include <util/memory.h>
+// #include <util/overlay.h>
+#include <util/profile.h>
+#include <util/random.h>
+#include <util/simd.h>
+// #include <util/string.h>

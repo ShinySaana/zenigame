@@ -47,17 +47,22 @@ fn main() {
 
 fn bindgen(sdk_seven_dir: &PathBuf) {
   let libseven_include_dir = sdk_seven_dir.join("libseven").join("include");
+  let libutil_include_dir = sdk_seven_dir.join("libutil").join("include");
 
   let wrapper_file_path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("wrapper.h");
 
   let mut builder = bindgen::Builder::default()
     .header(wrapper_file_path.to_str().unwrap());
 
-  let headers_dir_canonical = canonicalize(libseven_include_dir).unwrap();
-  let include_dir = headers_dir_canonical.to_str().unwrap();
-  builder = builder.clang_arg(format!("-I{include_dir}"));
+  let libseven_headers_dir_canonical = canonicalize(libseven_include_dir).unwrap();
+  let libutil_headers_dir_canonical = canonicalize(libutil_include_dir).unwrap();
 
-  println!("cargo:rerun-if-changed={}/seven/base.h", include_dir);
+  let libseven_include_dir = libseven_headers_dir_canonical.to_str().unwrap();
+  let libutil_include_dir = libutil_headers_dir_canonical.to_str().unwrap();
+  builder = builder.clang_arg(format!("-I{libseven_include_dir}"));
+  builder = builder.clang_arg(format!("-I{libutil_include_dir}"));
+
+  println!("cargo:rerun-if-changed={}/seven/base.h", libseven_include_dir);
   println!("cargo:rerun-if-changed=wrapper.h");
   builder = builder.parse_callbacks(Box::new(bindgen::CargoCallbacks));
 
