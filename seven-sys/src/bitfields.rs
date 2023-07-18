@@ -12,7 +12,7 @@ macro_rules! BITS {
 
 macro_rules! BITFIELD {
     ($name:ident, $value:expr) => {
-        (($value) & BITS!(concat_idents!(BF_, $name, _LENGTH))) << concat_idents!(BF_, $name, _OFFSET)
+        (($value) & BITS!(concat_idents!(BF_, $name, _LEN))) << concat_idents!(BF_, $name, _OFF)
     };
 }
 
@@ -26,25 +26,25 @@ macro_rules! BITFIELD_FN {
     };
 }
 
-// seven/hw/cpu.h
+// seven/cpu.h
 BITFIELD_FN!(PSR_MODE);
 BITFIELD_FN!(PSR_CONTROL_BITS);
 BITFIELD_FN!(PSR_FLAGS);
 
-// seven/hw/dma.h
+// seven/dma.h
 BITFIELD_FN!(DMA_DST);
 BITFIELD_FN!(DMA_SRC);
 BITFIELD_FN!(DMA_START);
 
-// seven/hw/serial.h
+// seven/serial.h
 BITFIELD_FN!(SIO_MODE);
 BITFIELD_FN!(R_MODE);
 
-// seven/hw/timer.h
+// seven/timer.h
 BITFIELD_FN!(TIMER_FREQ);
 
-// seven/hw/video.h
-BITFIELD_FN!(VIDEO_MODE);
+// seven/video.h
+// BITFIELD_FN!(VIDEO_MODE); VIDEO_MODE disappeared?
 BITFIELD_FN!(LCD_TARGET_VCOUNT);
 BITFIELD_FN!(BG_PRIORITY);
 BITFIELD_FN!(BG_GFX_BASE);
@@ -52,40 +52,40 @@ BITFIELD_FN!(BG_MAP_BASE);
 BITFIELD_FN!(BG_SIZE);
 BITFIELD_FN!(BG_AFFINE_SIZE);
 
-// seven/hw/waitstate.h
+// seven/waitstate.h
 BITFIELD_FN!(WAIT_SRAM);
 BITFIELD_FN!(WAIT_ROM_N);
 BITFIELD_FN!(WAIT_ROM_S);
 
-// seven/hw/serial/multiplayer.h
+// seven/serial/multiplayer.h
 BITFIELD_FN!(MULTI_BAUD);
 BITFIELD_FN!(MULTI_CLIENT_ID);
 
-// seven/hw/serial/spi.h
+// seven/serial/spi.h
 BITFIELD_FN!(SPI_CLOCK);
 
-// seven/hw/serial/uart.h
+// seven/serial/uart.h
 BITFIELD_FN!(UART_BAUD);
 
-// seven/hw/video/gb_tiled.h
+// seven/video/gb_tiled.h
 BITFIELD_FN!(TILE_NUMBER);
 BITFIELD_FN!(TILE_PALETTE);
 
-// seven/hw/video/blend.h
+// seven/video/blend.h
 BITFIELD_FN!(BLEND_MODE);
 
-// seven/hw/video/color.h
+// seven/video/color.h
 BITFIELD_FN!(COLOR_R);
 BITFIELD_FN!(COLOR_G);
 BITFIELD_FN!(COLOR_B);
 
-// seven/hw/video/mosaic.h
+// seven/video/mosaic.h
 BITFIELD_FN!(MOSAIC_BG_H);
 BITFIELD_FN!(MOSAIC_BG_V);
 BITFIELD_FN!(MOSAIC_OBJ_H);
 BITFIELD_FN!(MOSAIC_OBJ_V);
 
-// seven/hw/video/object.h
+// seven/video/object.h
 BITFIELD_FN!(OBJ_Y_POS);
 BITFIELD_FN!(OBJ_MODE);
 BITFIELD_FN!(OBJ_TYPE);
